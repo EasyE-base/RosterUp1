@@ -3,9 +3,10 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Plus, Calendar, Users, Settings } from 'lucide-react';
+import { ArrowLeft, Plus, Calendar, Users, Settings, DollarSign } from 'lucide-react';
 import { OrgTeams } from './components/org-teams';
 import { OrgSettings } from './components/org-settings';
+import { PayoutsDashboard } from './components/payouts-dashboard';
 
 export default async function OrgDetailPage({
   params,
@@ -99,6 +100,17 @@ export default async function OrgDetailPage({
                 Teams & Seasons
               </Link>
               <Link
+                href={`/dashboard/orgs/${org.id}?tab=payouts`}
+                className={`${
+                  tab === 'payouts'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                } whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm flex items-center`}
+              >
+                <DollarSign className="mr-2 h-4 w-4" />
+                Payouts
+              </Link>
+              <Link
                 href={`/dashboard/orgs/${org.id}?tab=settings`}
                 className={`${
                   tab === 'settings'
@@ -114,6 +126,7 @@ export default async function OrgDetailPage({
 
           <div className="mt-6">
             {tab === 'teams' && <OrgTeams org={org} teams={teams || []} />}
+            {tab === 'payouts' && <PayoutsDashboard org={org} />}
             {tab === 'settings' && <OrgSettings org={org} />}
           </div>
         </div>

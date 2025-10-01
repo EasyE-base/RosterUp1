@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { supabase } from '@rosterup/lib';
 import { useRouter } from 'next/navigation';
+import { StripeConnect } from './stripe-connect';
 
 export function OrgSettings({ org }: { org: any }) {
   const router = useRouter();
@@ -42,7 +43,12 @@ export function OrgSettings({ org }: { org: any }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="space-y-8">
+      <StripeConnect org={org} />
+      
+      <div>
+        <h3 className="text-lg font-medium text-gray-900 mb-4">Organization Details</h3>
+        <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           Organization Name
@@ -131,5 +137,7 @@ export function OrgSettings({ org }: { org: any }) {
         </button>
       </div>
     </form>
+      </div>
+    </div>
   );
 }
