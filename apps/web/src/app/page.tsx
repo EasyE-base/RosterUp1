@@ -1,23 +1,25 @@
-import { Header } from '@/components/marketing/header';
-import { Hero } from '@/components/marketing/hero';
-import { Features } from '@/components/marketing/features';
-import { Testimonials } from '@/components/marketing/testimonials';
-import { Pricing } from '@/components/marketing/pricing';
-import { CTASection } from '@/components/marketing/cta-section';
-import { Footer } from '@/components/marketing/footer';
+import { HeaderV2 } from '@/components/marketing/header-v2';
+import { HeroV2 } from '@/components/marketing/hero-v2';
+import { FeaturesV2 } from '@/components/marketing/features-v2';
+import { StatsSection } from '@/components/marketing/stats-section';
+import { SportsSection } from '@/components/marketing/sports-section';
+import { TestimonialsV2 } from '@/components/marketing/testimonials-v2';
+import { CTASectionV2 } from '@/components/marketing/cta-section-v2';
+import { FooterV2 } from '@/components/marketing/footer-v2';
 
 export default function HomePage() {
   return (
     <>
-      <Header />
+      <HeaderV2 />
       <main>
-        <Hero />
-        <Features />
-        <Testimonials />
-        <Pricing />
-        <CTASection />
+        <HeroV2 />
+        <StatsSection />
+        <FeaturesV2 />
+        <SportsSection />
+        <TestimonialsV2 />
+        <CTASectionV2 />
       </main>
-      <Footer />
+      <FooterV2 />
     </>
   );
 }
