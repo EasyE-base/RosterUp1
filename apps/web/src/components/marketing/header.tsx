@@ -35,8 +35,8 @@ export function Header() {
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-200",
         scrolled 
-          ? "bg-white/80 backdrop-blur-md shadow-sm" 
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-md shadow-sm" 
+          : "bg-white/80 backdrop-blur-sm"
       )}
     >
       <Container>

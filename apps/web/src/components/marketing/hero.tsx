@@ -7,14 +7,15 @@ import { GradientText } from '@/components/ui/gradient-text';
 import { Badge } from '@/components/ui/badge';
 import { ChevronRight, Play } from 'lucide-react';
 import Link from 'next/link';
+import { HeroGraphic } from './hero-graphic';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white pt-16 pb-20 sm:pt-24 sm:pb-32">
+    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white pt-32 pb-20 sm:pt-40 sm:pb-32">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-blue-100 opacity-50 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-purple-100 opacity-50 blur-3xl" />
+        <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-blue-200 opacity-30 blur-[100px]" />
+        <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-purple-200 opacity-30 blur-[100px]" />
       </div>
 
       <Container className="relative">
@@ -102,20 +103,14 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Hero image/graphic placeholder */}
+        {/* Hero image/graphic */}
         <motion.div
           className="mt-16 mx-auto max-w-5xl"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="relative rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 p-1">
-            <div className="rounded-xl bg-white p-8">
-              <div className="aspect-[16/9] rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                <p className="text-gray-500 text-lg">Dashboard Preview</p>
-              </div>
-            </div>
-          </div>
+          <HeroGraphic />
         </motion.div>
       </Container>
     </section>
