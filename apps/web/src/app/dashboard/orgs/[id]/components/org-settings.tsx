@@ -11,6 +11,7 @@ export function OrgSettings({ org }: { org: any }) {
   const [formData, setFormData] = useState({
     name: org.name,
     slug: org.slug || '',
+    logo_url: org.logo_url || '',
     website_url: org.website_url || '',
     refund_window_days: org.refund_window_days,
     refund_policy_text: org.refund_policy_text || ''
@@ -26,9 +27,11 @@ export function OrgSettings({ org }: { org: any }) {
         .update({
           name: formData.name,
           slug: formData.slug || null,
+          logo_url: formData.logo_url || null,
           website_url: formData.website_url || null,
           refund_window_days: formData.refund_window_days,
-          refund_policy_text: formData.refund_policy_text
+          refund_policy_text: formData.refund_policy_text,
+          updated_at: new Date().toISOString()
         })
         .eq('id', org.id);
 
@@ -81,6 +84,24 @@ export function OrgSettings({ org }: { org: any }) {
             className="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           />
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="logo_url" className="block text-sm font-medium text-gray-700">
+          Logo URL
+        </label>
+        <input
+          type="url"
+          name="logo_url"
+          id="logo_url"
+          value={formData.logo_url}
+          onChange={(e) => setFormData({ ...formData, logo_url: e.target.value })}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+          placeholder="https://example.com/logo.png"
+        />
+        <p className="mt-1 text-xs text-gray-500">
+          Enter a URL to an image for your organization logo
+        </p>
       </div>
 
       <div>

@@ -1,21 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { supabase } from '@rosterup/lib';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
-export default function NewListingPage() {
+export default function EditListingPage() {
   const router = useRouter();
+  const params = useParams();
+  const listingId = params.id as string;
+
   const [loading, setLoading] = useState(false);
+  const [loadingData, setLoadingData] = useState(true);
   const [error, setError] = useState('');
   const [teams, setTeams] = useState<any[]>([]);
   const [seasons, setSeasons] = useState<any[]>([]);
   const [positions, setPositions] = useState<any[]>([]);
   const [selectedTeam, setSelectedTeam] = useState('');
   const [selectedSport, setSelectedSport] = useState<number | null>(null);
-  
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -28,12 +32,14 @@ export default function NewListingPage() {
     max_grade: '',
     capacity: '',
     deadline: '',
-    visibility: 'public',
+    visibility: 'public' as 'public' | 'invite',
+    status: 'open' as 'open' | 'closed',
     fee_cents: '',
   });
 
   useEffect(() => {
     loadTeams();
+    loadListing();
   }, []);
 
   useEffect(() => {
@@ -46,6 +52,54 @@ export default function NewListingPage() {
       }
     }
   }, [selectedTeam, teams]);
+
+  const loadListing = async () => {
+    try {
+      const { data, error: fetchError } = await supabase
+        .from('roster_spots')
+        .select(`
+          *,
+          teams (id, name, sport_id, sports (name))
+        `)
+        .eq('id', listingId)
+        .single();
+
+      if (fetchError) throw fetchError;
+      if (!data) throw new Error('Listing not found');
+
+      // Convert deadline from ISO to datetime-local format
+      const deadlineValue = data.deadline
+        ? new Date(data.deadline).toISOString().slice(0, 16)
+        : '';
+
+      setFormData({
+        title: data.title || '',
+        description: data.description || '',
+        team_id: data.team_id || '',
+        season_id: data.season_id || '',
+        position_id: data.position_id ? String(data.position_id) : '',
+        min_age: data.min_age ? String(data.min_age) : '',
+        max_age: data.max_age ? String(data.max_age) : '',
+        min_grade: data.min_grade ? String(data.min_grade) : '',
+        max_grade: data.max_grade ? String(data.max_grade) : '',
+        capacity: data.capacity ? String(data.capacity) : '',
+        deadline: deadlineValue,
+        visibility: data.visibility || 'public',
+        status: data.status || 'open',
+        fee_cents: data.fee_cents ? String(data.fee_cents / 100) : '',
+      });
+
+      setSelectedTeam(data.team_id);
+      setSelectedSport(data.teams.sport_id);
+
+      await loadSeasons(data.team_id);
+      await loadPositions(data.teams.sport_id);
+    } catch (err: any) {
+      setError(err.message || 'Failed to load listing');
+    } finally {
+      setLoadingData(false);
+    }
+  };
 
   const loadTeams = async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -90,29 +144,31 @@ export default function NewListingPage() {
     setError('');
 
     try {
-      const { error: insertError } = await supabase
+      const { error: updateError } = await supabase
         .from('roster_spots')
-        .insert({
+        .update({
           title: formData.title,
           description: formData.description || null,
           team_id: formData.team_id,
           season_id: formData.season_id || null,
-          position_id: formData.position_id || null,
+          position_id: formData.position_id ? parseInt(formData.position_id) : null,
           min_age: formData.min_age ? parseInt(formData.min_age) : null,
           max_age: formData.max_age ? parseInt(formData.max_age) : null,
           min_grade: formData.min_grade ? parseInt(formData.min_grade) : null,
           max_grade: formData.max_grade ? parseInt(formData.max_grade) : null,
           capacity: formData.capacity ? parseInt(formData.capacity) : null,
           deadline: formData.deadline || null,
-          visibility: formData.visibility as 'public' | 'invite',
+          visibility: formData.visibility,
+          status: formData.status,
           fee_cents: formData.fee_cents ? Math.round(parseFloat(formData.fee_cents) * 100) : null,
-          status: 'open'
-        });
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', listingId);
 
-      if (insertError) throw insertError;
-      router.push('/dashboard/listings');
+      if (updateError) throw updateError;
+      router.push(`/dashboard/listings/${listingId}`);
     } catch (err: any) {
-      setError(err.message || 'Failed to create listing');
+      setError(err.message || 'Failed to update listing');
     } finally {
       setLoading(false);
     }
@@ -123,29 +179,37 @@ export default function NewListingPage() {
     setFormData({ ...formData, team_id: teamId, season_id: '', position_id: '' });
   };
 
+  if (loadingData) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <div className="mb-8">
+      <div className="mb-6">
         <Link
-          href="/dashboard/listings"
-          className="inline-flex items-center text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-smooth"
+          href={`/dashboard/listings/${listingId}`}
+          className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Listings
+          <ArrowLeft className="mr-1 h-4 w-4" />
+          Back to Listing
         </Link>
       </div>
 
-      <div className="bg-white shadow-premium-lg rounded-3xl border border-slate-200">
-        <div className="px-8 py-8 sm:p-10">
-          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Create New Listing</h2>
-          <p className="mt-2 text-lg text-slate-600 font-medium">
-            Post a roster spot or tryout opportunity
+      <div className="bg-white shadow rounded-lg">
+        <div className="px-4 py-5 sm:p-6">
+          <h2 className="text-lg font-medium text-gray-900">Edit Listing</h2>
+          <p className="mt-1 text-sm text-gray-600">
+            Update listing details and requirements
           </p>
 
-          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+          <form onSubmit={handleSubmit} className="mt-6 space-y-6">
             {error && (
-              <div className="rounded-xl bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-500 p-6">
-                <p className="text-sm font-semibold text-red-800">{error}</p>
+              <div className="rounded-md bg-red-50 p-4">
+                <p className="text-sm text-red-800">{error}</p>
               </div>
             )}
 
@@ -361,30 +425,30 @@ export default function NewListingPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Visibility
               </label>
-              <div className="mt-2 space-y-2">
-                <label className="inline-flex items-center">
+              <div className="space-y-2">
+                <label className="flex items-center">
                   <input
                     type="radio"
                     name="visibility"
                     value="public"
                     checked={formData.visibility === 'public'}
-                    onChange={(e) => setFormData({ ...formData, visibility: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, visibility: e.target.value as 'public' | 'invite' })}
                     className="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                   />
                   <span className="ml-2 text-sm text-gray-700">
                     Public - Anyone can view and apply
                   </span>
                 </label>
-                <label className="inline-flex items-center">
+                <label className="flex items-center">
                   <input
                     type="radio"
                     name="visibility"
                     value="invite"
                     checked={formData.visibility === 'invite'}
-                    onChange={(e) => setFormData({ ...formData, visibility: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, visibility: e.target.value as 'public' | 'invite' })}
                     className="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                   />
                   <span className="ml-2 text-sm text-gray-700">
@@ -394,19 +458,53 @@ export default function NewListingPage() {
               </div>
             </div>
 
-            <div className="flex justify-end gap-4 pt-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Status
+              </label>
+              <div className="space-y-2">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="status"
+                    value="open"
+                    checked={formData.status === 'open'}
+                    onChange={(e) => setFormData({ ...formData, status: e.target.value as 'open' | 'closed' })}
+                    className="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  />
+                  <span className="ml-2 text-sm text-gray-700">
+                    Open - Accepting applications
+                  </span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="status"
+                    value="closed"
+                    checked={formData.status === 'closed'}
+                    onChange={(e) => setFormData({ ...formData, status: e.target.value as 'open' | 'closed' })}
+                    className="form-radio h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  />
+                  <span className="ml-2 text-sm text-gray-700">
+                    Closed - Not accepting applications
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div className="flex justify-end space-x-3">
               <Link
-                href="/dashboard/listings"
-                className="px-6 py-3 border-2 border-slate-300 rounded-xl font-bold text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transition-smooth shadow-sm"
+                href={`/dashboard/listings/${listingId}`}
+                className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Cancel
               </Link>
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-bold rounded-xl hover:from-indigo-700 hover:to-indigo-800 shadow-lg shadow-indigo-500/25 transition-smooth active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
               >
-                {loading ? 'Creating...' : 'Create Listing'}
+                {loading ? 'Saving...' : 'Save Changes'}
               </button>
             </div>
           </form>

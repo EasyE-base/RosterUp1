@@ -66,221 +66,175 @@ export default async function ApplicationsPage() {
     return age;
   };
 
-  const ApplicationRow = ({ app }: { app: any }) => {
+  const ApplicationCard = ({ app }: { app: any }) => {
     const age = calculateAge(app.kids.birthdate);
 
     return (
-      <tr>
-        <td className="px-6 py-4 whitespace-nowrap">
-          <div className="flex items-center">
+      <div className="bg-white rounded-2xl shadow-premium border border-slate-200 hover:shadow-premium-lg hover:border-indigo-200 transition-smooth p-6">
+        <div className="flex items-start gap-4">
+          {/* Avatar */}
+          <div className="flex-shrink-0">
             {app.kids.photo_url ? (
               <img
-                className="h-10 w-10 rounded-full"
+                className="h-16 w-16 rounded-full ring-2 ring-slate-200"
                 src={app.kids.photo_url}
                 alt={app.kids.first_name}
               />
             ) : (
-              <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-                <User className="h-5 w-5 text-gray-400" />
+              <div className="h-16 w-16 rounded-full bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center ring-2 ring-slate-200">
+                <User className="h-8 w-8 text-slate-400" />
               </div>
             )}
-            <div className="ml-4">
-              <div className="text-sm font-medium text-gray-900">
-                {app.kids.first_name} {app.kids.last_name}
+          </div>
+
+          {/* Main Info */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <h3 className="text-lg font-bold text-slate-900">
+                  {app.kids.first_name} {app.kids.last_name}
+                </h3>
+                <div className="text-sm text-slate-600 font-medium mt-1">
+                  {age && `Age ${age}`}
+                  {age && app.kids.grade && ' • '}
+                  {app.kids.grade && `Grade ${app.kids.grade}`}
+                </div>
               </div>
-              <div className="text-sm text-gray-500">
-                {age && `Age ${age}`}
-                {age && app.kids.grade && ' • '}
-                {app.kids.grade && `Grade ${app.kids.grade}`}
+              <span className={`px-3 py-1 inline-flex text-xs font-bold rounded-full ${
+                app.status === 'submitted' ? 'bg-gradient-to-r from-amber-100 to-amber-50 text-amber-900 border border-amber-200' :
+                app.status === 'in_review' ? 'bg-gradient-to-r from-blue-100 to-blue-50 text-blue-900 border border-blue-200' :
+                app.status === 'accepted' ? 'bg-gradient-to-r from-emerald-100 to-emerald-50 text-emerald-900 border border-emerald-200' :
+                app.status === 'waitlisted' ? 'bg-gradient-to-r from-orange-100 to-orange-50 text-orange-900 border border-orange-200' :
+                'bg-gradient-to-r from-slate-100 to-slate-50 text-slate-900 border border-slate-200'
+              }`}>
+                {app.status.replace('_', ' ')}
+              </span>
+            </div>
+
+            <div className="space-y-2 mb-4">
+              {/* Listing */}
+              <div className="flex items-center text-sm">
+                <ClipboardList className="h-4 w-4 mr-2 text-indigo-500 flex-shrink-0" />
+                <div>
+                  <span className="font-semibold text-slate-900">{app.roster_spots?.title}</span>
+                  <span className="text-slate-600 mx-2">•</span>
+                  <span className="text-slate-600 font-medium">
+                    {app.roster_spots?.teams?.name}
+                    {app.roster_spots?.seasons?.name && ` • ${app.roster_spots.seasons.name}`}
+                  </span>
+                </div>
+              </div>
+
+              {/* Parent */}
+              <div className="flex items-center text-sm">
+                <User className="h-4 w-4 mr-2 text-indigo-500 flex-shrink-0" />
+                <div>
+                  <span className="font-semibold text-slate-900">{app.profiles?.full_name || 'Unknown'}</span>
+                  {(app.profiles?.city || app.profiles?.state) && (
+                    <>
+                      <span className="text-slate-600 mx-2">•</span>
+                      <span className="text-slate-600 font-medium">
+                        {[app.profiles.city, app.profiles.state].filter(Boolean).join(', ')}
+                      </span>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Date */}
+              <div className="flex items-center text-sm">
+                <Calendar className="h-4 w-4 mr-2 text-indigo-500 flex-shrink-0" />
+                <span className="text-slate-600 font-medium">
+                  Applied {new Date(app.created_at).toLocaleDateString()}
+                </span>
               </div>
             </div>
-          </div>
-        </td>
-        <td className="px-6 py-4 whitespace-nowrap">
-          <div className="text-sm text-gray-900">{app.roster_spots?.title}</div>
-          <div className="text-sm text-gray-500">
-            {app.roster_spots?.teams?.name}
-            {app.roster_spots?.seasons?.name && ` • ${app.roster_spots.seasons.name}`}
-          </div>
-        </td>
-        <td className="px-6 py-4 whitespace-nowrap">
-          <div className="text-sm text-gray-900">{app.profiles?.full_name || 'Unknown'}</div>
-          {(app.profiles?.city || app.profiles?.state) && (
-            <div className="text-sm text-gray-500 flex items-center">
-              <MapPin className="h-3 w-3 mr-1" />
-              {[app.profiles.city, app.profiles.state].filter(Boolean).join(', ')}
-            </div>
-          )}
-        </td>
-        <td className="px-6 py-4 whitespace-nowrap">
-          <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-            app.status === 'submitted' ? 'bg-yellow-100 text-yellow-800' :
-            app.status === 'in_review' ? 'bg-blue-100 text-blue-800' :
-            app.status === 'accepted' ? 'bg-green-100 text-green-800' :
-            app.status === 'waitlisted' ? 'bg-orange-100 text-orange-800' :
-            'bg-gray-100 text-gray-800'
-          }`}>
-            {app.status.replace('_', ' ')}
-          </span>
-        </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-          {new Date(app.created_at).toLocaleDateString()}
-        </td>
-        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-          <div className="flex items-center space-x-3">
-            <Link
-              href={`/dashboard/listings/${app.roster_spots?.id}`}
-              className="text-blue-600 hover:text-blue-900"
-            >
-              <ClipboardList className="h-5 w-5" />
-            </Link>
-            {app.conversations?.[0] && (
+
+            {/* Actions */}
+            <div className="flex items-center gap-3">
               <Link
-                href={`/dashboard/applications/${app.id}`}
-                className="text-blue-600 hover:text-blue-900"
+                href={`/dashboard/listings/${app.roster_spots?.id}`}
+                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-slate-100 to-slate-50 text-slate-900 font-semibold rounded-lg hover:from-slate-200 hover:to-slate-100 transition-smooth border border-slate-200"
               >
-                <MessageSquare className="h-5 w-5" />
+                <ClipboardList className="h-4 w-4 mr-2" />
+                View Listing
               </Link>
-            )}
+              {app.conversations?.[0] && (
+                <Link
+                  href={`/dashboard/applications/${app.id}`}
+                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-smooth shadow-lg shadow-indigo-500/25"
+                >
+                  <MessageSquare className="h-4 w-4 mr-2" />
+                  Message
+                </Link>
+              )}
+            </div>
           </div>
-        </td>
-      </tr>
+        </div>
+      </div>
     );
   };
 
   return (
     <div>
-      <div className="sm:flex sm:items-center">
-        <div className="sm:flex-auto">
-          <h1 className="text-2xl font-semibold text-gray-900">Applications</h1>
-          <p className="mt-2 text-sm text-gray-700">
-            Review and manage applications across all your teams
-          </p>
-        </div>
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">Applications</h1>
+        <p className="mt-2 text-lg text-slate-600 font-medium">
+          Review and manage applications across all your teams
+        </p>
       </div>
 
+      {/* New Applications */}
       {newApplications.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">
             New Applications ({newApplications.length})
           </h2>
-          <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-300">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Applicant
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Listing
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Parent
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Applied
-                  </th>
-                  <th className="relative px-6 py-3">
-                    <span className="sr-only">Actions</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {newApplications.map((app) => (
-                  <ApplicationRow key={app.id} app={app} />
-                ))}
-              </tbody>
-            </table>
+          <div className="space-y-4">
+            {newApplications.map((app) => (
+              <ApplicationCard key={app.id} app={app} />
+            ))}
           </div>
         </div>
       )}
 
+      {/* In Review */}
       {inReview.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">
             In Review ({inReview.length})
           </h2>
-          <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-300">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Applicant
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Listing
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Parent
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Applied
-                  </th>
-                  <th className="relative px-6 py-3">
-                    <span className="sr-only">Actions</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {inReview.map((app) => (
-                  <ApplicationRow key={app.id} app={app} />
-                ))}
-              </tbody>
-            </table>
+          <div className="space-y-4">
+            {inReview.map((app) => (
+              <ApplicationCard key={app.id} app={app} />
+            ))}
           </div>
         </div>
       )}
 
+      {/* Recent Decisions */}
       {recentDecisions.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">
             Recent Decisions
           </h2>
-          <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-300">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Applicant
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Listing
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Parent
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Applied
-                  </th>
-                  <th className="relative px-6 py-3">
-                    <span className="sr-only">Actions</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {recentDecisions.slice(0, 10).map((app) => (
-                  <ApplicationRow key={app.id} app={app} />
-                ))}
-              </tbody>
-            </table>
+          <div className="space-y-4">
+            {recentDecisions.slice(0, 10).map((app) => (
+              <ApplicationCard key={app.id} app={app} />
+            ))}
           </div>
         </div>
       )}
 
+      {/* Empty State */}
       {applications?.length === 0 && (
-        <div className="mt-8 text-center py-12 bg-white rounded-lg shadow">
-          <MessageSquare className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-sm font-medium text-gray-900">No applications</h3>
-          <p className="mt-1 text-sm text-gray-500">
+        <div className="bg-white rounded-3xl shadow-premium border border-slate-200 p-12 text-center">
+          <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full flex items-center justify-center">
+            <MessageSquare className="h-10 w-10 text-slate-400" />
+          </div>
+          <h3 className="text-2xl font-bold text-slate-900 mb-3">No Applications Yet</h3>
+          <p className="text-slate-600 text-lg font-medium max-w-md mx-auto">
             Applications will appear here when parents apply to your listings.
           </p>
         </div>

@@ -3,7 +3,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, User, Calendar, MapPin, MessageSquare } from 'lucide-react';
+import { ArrowLeft, User, Calendar, MapPin } from 'lucide-react';
+import { MessagingSection } from './components/messaging-section';
 
 export default async function ApplicationDetailPage({
   params
@@ -150,42 +151,11 @@ export default async function ApplicationDetailPage({
           </div>
 
           {/* Messages */}
-          <div className="mt-6 bg-white shadow rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-              <h2 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
-                <MessageSquare className="h-5 w-5 mr-2" />
-                Messages
-              </h2>
-              
-              {application.conversations?.[0]?.messages && application.conversations[0].messages.length > 0 ? (
-                <div className="space-y-4">
-                  {application.conversations[0].messages.map((message: any) => (
-                    <div
-                      key={message.id}
-                      className={`flex ${message.sender_id === profile.id ? 'justify-end' : 'justify-start'}`}
-                    >
-                      <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                        message.sender_id === profile.id
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-200 text-gray-900'
-                      }`}>
-                        <p className="text-sm">{message.content}</p>
-                        <p className={`text-xs mt-1 ${
-                          message.sender_id === profile.id ? 'text-blue-200' : 'text-gray-500'
-                        }`}>
-                          {message.profiles?.full_name} • {new Date(message.created_at).toLocaleTimeString()}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-sm text-gray-500 text-center py-8">
-                  No messages yet. Messaging functionality coming soon!
-                </p>
-              )}
-            </div>
-          </div>
+          <MessagingSection
+            applicationId={application.id}
+            currentUserId={profile.id}
+            existingConversationId={application.conversations?.[0]?.id}
+          />
         </div>
 
         {/* Applicant Info */}

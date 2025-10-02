@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Plus, Calendar, MapPin, Users } from 'lucide-react';
+import { Plus, Calendar, MapPin, Users, Edit } from 'lucide-react';
 import { supabase } from '@rosterup/lib';
 import { useRouter } from 'next/navigation';
 
@@ -24,6 +24,7 @@ type Team = {
 export function OrgTeams({ org, teams }: { org: any; teams: Team[] }) {
   const router = useRouter();
   const [creatingSeasons, setCreatingSeasons] = useState<Set<string>>(new Set());
+  const [editingSeasons, setEditingSeasons] = useState<Set<string>>(new Set());
 
   const handleCreateSeason = async (teamId: string) => {
     const seasonName = prompt('Enter season name (e.g., "Spring 2025"):');
@@ -47,6 +48,38 @@ export function OrgTeams({ org, teams }: { org: any; teams: Team[] }) {
       setCreatingSeasons(prev => {
         const next = new Set(prev);
         next.delete(teamId);
+        return next;
+      });
+    }
+  };
+
+  const handleEditSeason = async (season: any) => {
+    const newName = prompt('Enter new season name:', season.name);
+    if (!newName || newName === season.name) return;
+
+    const startsOn = prompt('Start date (YYYY-MM-DD, optional):', season.starts_on || '');
+    const endsOn = prompt('End date (YYYY-MM-DD, optional):', season.ends_on || '');
+
+    setEditingSeasons(prev => new Set(prev).add(season.id));
+
+    try {
+      const { error } = await supabase
+        .from('seasons')
+        .update({
+          name: newName,
+          starts_on: startsOn || null,
+          ends_on: endsOn || null
+        })
+        .eq('id', season.id);
+
+      if (error) throw error;
+      router.refresh();
+    } catch (err: any) {
+      alert('Failed to update season: ' + err.message);
+    } finally {
+      setEditingSeasons(prev => {
+        const next = new Set(prev);
+        next.delete(season.id);
         return next;
       });
     }
@@ -86,12 +119,21 @@ export function OrgTeams({ org, teams }: { org: any; teams: Team[] }) {
                     </p>
                   )}
                 </div>
-                <Link
-                  href={`/dashboard/teams/${team.id}`}
-                  className="text-sm text-blue-600 hover:text-blue-500"
-                >
-                  Manage →
-                </Link>
+                <div className="flex items-center space-x-2">
+                  <Link
+                    href={`/dashboard/orgs/${org.id}/teams/${team.id}/edit`}
+                    className="inline-flex items-center px-3 py-1 border border-gray-300 shadow-sm text-xs font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  >
+                    <Edit className="h-3 w-3 mr-1" />
+                    Edit
+                  </Link>
+                  <Link
+                    href={`/dashboard/teams/${team.id}`}
+                    className="text-sm text-blue-600 hover:text-blue-500"
+                  >
+                    Manage →
+                  </Link>
+                </div>
               </div>
 
               <div className="mt-4">
@@ -125,12 +167,21 @@ export function OrgTeams({ org, teams }: { org: any; teams: Team[] }) {
                             </span>
                           )}
                         </div>
-                        <Link
-                          href={`/dashboard/listings?season=${season.id}`}
-                          className="text-blue-600 hover:text-blue-500"
-                        >
-                          View Listings →
-                        </Link>
+                        <div className="flex items-center space-x-3">
+                          <button
+                            onClick={() => handleEditSeason(season)}
+                            disabled={editingSeasons.has(season.id)}
+                            className="text-gray-600 hover:text-gray-900 disabled:opacity-50"
+                          >
+                            <Edit className="h-3 w-3" />
+                          </button>
+                          <Link
+                            href={`/dashboard/listings?season=${season.id}`}
+                            className="text-blue-600 hover:text-blue-500"
+                          >
+                            View Listings →
+                          </Link>
+                        </div>
                       </div>
                     ))}
                   </div>

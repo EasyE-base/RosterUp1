@@ -5,6 +5,7 @@ import { supabase } from '@rosterup/lib';
 import { useRouter } from 'next/navigation';
 import { MessageSquare, User, Calendar, MapPin, Check, X, Clock } from 'lucide-react';
 import Link from 'next/link';
+import { trackOfferSent } from '@/lib/analytics';
 
 type Application = {
   id: string;
@@ -47,6 +48,7 @@ export function ApplicationsList({
 }) {
   const router = useRouter();
   const [updating, setUpdating] = useState<Set<string>>(new Set());
+  const [makingOffer, setMakingOffer] = useState<Set<string>>(new Set());
 
   const updateStatus = async (applicationId: string, newStatus: string) => {
     setUpdating(prev => new Set(prev).add(applicationId));
@@ -80,6 +82,44 @@ export function ApplicationsList({
       age--;
     }
     return age;
+  };
+
+  const handleMakeOffer = async (applicationId: string) => {
+    if (!confirm('Are you sure you want to make an offer to this applicant? This will notify the parent.')) {
+      return;
+    }
+
+    setMakingOffer(prev => new Set(prev).add(applicationId));
+
+    try {
+      const response = await fetch('/api/offers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ applicationId, expiresInDays: 7 })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create offer');
+      }
+
+      // Track analytics event
+      if (data.offer?.id) {
+        trackOfferSent(data.offer.id, applicationId);
+      }
+
+      alert('Offer created successfully! The parent will be notified.');
+      router.refresh();
+    } catch (err: any) {
+      alert('Failed to create offer: ' + err.message);
+    } finally {
+      setMakingOffer(prev => {
+        const next = new Set(prev);
+        next.delete(applicationId);
+        return next;
+      });
+    }
   };
 
   const ApplicationCard = ({ app, showActions = true }: { app: Application; showActions?: boolean }) => {
@@ -204,6 +244,25 @@ export function ApplicationsList({
               >
                 <Check className="h-3 w-3 mr-1" />
                 Accept from Waitlist
+              </button>
+            )}
+            {app.status === 'accepted' && (
+              <button
+                onClick={() => handleMakeOffer(app.id)}
+                disabled={makingOffer.has(app.id)}
+                className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+              >
+                {makingOffer.has(app.id) ? (
+                  <>
+                    <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-white mr-1"></div>
+                    Making Offer...
+                  </>
+                ) : (
+                  <>
+                    <Check className="h-3 w-3 mr-1" />
+                    Make Offer
+                  </>
+                )}
               </button>
             )}
           </div>

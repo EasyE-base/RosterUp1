@@ -34,11 +34,16 @@ export function Sidebar() {
   };
 
   return (
-    <div className="flex h-full w-64 flex-col bg-gray-900">
-      <div className="flex h-16 items-center justify-center">
-        <h1 className="text-2xl font-bold text-white">RosterUp</h1>
+    <div className="flex h-full w-64 flex-col bg-gradient-to-b from-indigo-900 to-indigo-950 border-r border-indigo-800/30">
+      {/* Logo Header */}
+      <div className="flex h-20 items-center justify-center border-b border-indigo-800/30">
+        <h1 className="text-3xl font-extrabold bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent">
+          RosterUp
+        </h1>
       </div>
-      <nav className="flex-1 space-y-1 px-2 py-4">
+
+      {/* Navigation */}
+      <nav className="flex-1 space-y-1 px-3 py-6">
         {navigation.map((item) => {
           const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
           return (
@@ -46,15 +51,15 @@ export function Sidebar() {
               key={item.name}
               href={item.href}
               className={`
-                group flex items-center px-2 py-2 text-sm font-medium rounded-md
-                ${isActive 
-                  ? 'bg-gray-800 text-white' 
-                  : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                group flex items-center px-4 py-3 text-sm font-semibold rounded-xl transition-smooth
+                ${isActive
+                  ? 'bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-500/25'
+                  : 'text-indigo-200 hover:bg-indigo-800/50 hover:text-white'
                 }
               `}
             >
               <item.icon
-                className={`mr-3 h-5 w-5 ${isActive ? 'text-white' : 'text-gray-400'}`}
+                className={`mr-3 h-5 w-5 ${isActive ? 'text-white' : 'text-indigo-300'}`}
                 aria-hidden="true"
               />
               {item.name}
@@ -62,12 +67,14 @@ export function Sidebar() {
           );
         })}
       </nav>
-      <div className="flex-shrink-0 p-4">
+
+      {/* Sign Out */}
+      <div className="flex-shrink-0 p-4 border-t border-indigo-800/30">
         <button
           onClick={handleSignOut}
-          className="group flex w-full items-center px-2 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+          className="group flex w-full items-center px-4 py-3 text-sm font-semibold text-indigo-200 rounded-xl hover:bg-indigo-800/50 hover:text-white transition-smooth"
         >
-          <LogOut className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+          <LogOut className="mr-3 h-5 w-5 text-indigo-300" aria-hidden="true" />
           Sign out
         </button>
       </div>

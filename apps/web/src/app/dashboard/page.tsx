@@ -53,153 +53,166 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-      <p className="mt-1 text-sm text-gray-600">
-        Welcome back, {profile.full_name || 'Coach'}
-      </p>
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">Dashboard</h1>
+        <p className="mt-2 text-lg text-slate-600 font-medium">
+          Welcome back, {profile.full_name || 'Coach'}
+        </p>
+      </div>
 
       {isCoachOrAdmin ? (
         <>
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+            {/* Organizations Card */}
+            <div className="bg-white rounded-2xl shadow-premium border border-slate-200 overflow-hidden transition-smooth hover:shadow-premium-lg hover:border-indigo-200">
+              <div className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <Users className="h-6 w-6 text-gray-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-white" />
                   </div>
-                  <div className="ml-5 w-0 flex-1">
-                    <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
-                        Organizations
-                      </dt>
-                      <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-gray-900">
-                          {stats.orgs}
-                        </div>
-                      </dd>
-                    </dl>
+                  <div className="ml-4 flex-1">
+                    <dt className="text-sm font-semibold text-slate-500 truncate">
+                      Organizations
+                    </dt>
+                    <dd className="mt-1">
+                      <div className="text-3xl font-bold text-slate-900">
+                        {stats.orgs}
+                      </div>
+                    </dd>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-5 py-3">
-                <Link href="/dashboard/orgs" className="text-sm text-blue-600 hover:text-blue-500">
-                  Manage orgs →
+              <div className="bg-gradient-to-r from-slate-50 to-slate-100 px-6 py-3 border-t border-slate-200">
+                <Link href="/dashboard/orgs" className="text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-smooth inline-flex items-center">
+                  Manage orgs
+                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
             </div>
 
-            <div className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
+            {/* Teams Card */}
+            <div className="bg-white rounded-2xl shadow-premium border border-slate-200 overflow-hidden transition-smooth hover:shadow-premium-lg hover:border-indigo-200">
+              <div className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <Users className="h-6 w-6 text-gray-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-white" />
                   </div>
-                  <div className="ml-5 w-0 flex-1">
-                    <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
-                        Teams
-                      </dt>
-                      <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-gray-900">
-                          {stats.teams}
-                        </div>
-                      </dd>
-                    </dl>
+                  <div className="ml-4 flex-1">
+                    <dt className="text-sm font-semibold text-slate-500 truncate">
+                      Teams
+                    </dt>
+                    <dd className="mt-1">
+                      <div className="text-3xl font-bold text-slate-900">
+                        {stats.teams}
+                      </div>
+                    </dd>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-5 py-3">
-                <Link href="/dashboard/orgs" className="text-sm text-blue-600 hover:text-blue-500">
-                  View teams →
+              <div className="bg-gradient-to-r from-slate-50 to-slate-100 px-6 py-3 border-t border-slate-200">
+                <Link href="/dashboard/orgs" className="text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-smooth inline-flex items-center">
+                  View teams
+                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
             </div>
 
-            <div className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
+            {/* Active Listings Card */}
+            <div className="bg-white rounded-2xl shadow-premium border border-slate-200 overflow-hidden transition-smooth hover:shadow-premium-lg hover:border-indigo-200">
+              <div className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <ClipboardList className="h-6 w-6 text-gray-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <ClipboardList className="h-6 w-6 text-white" />
                   </div>
-                  <div className="ml-5 w-0 flex-1">
-                    <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
-                        Active Listings
-                      </dt>
-                      <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-gray-900">
-                          {stats.activeListings}
-                        </div>
-                      </dd>
-                    </dl>
+                  <div className="ml-4 flex-1">
+                    <dt className="text-sm font-semibold text-slate-500 truncate">
+                      Active Listings
+                    </dt>
+                    <dd className="mt-1">
+                      <div className="text-3xl font-bold text-slate-900">
+                        {stats.activeListings}
+                      </div>
+                    </dd>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-5 py-3">
-                <Link href="/dashboard/listings" className="text-sm text-blue-600 hover:text-blue-500">
-                  View all →
+              <div className="bg-gradient-to-r from-slate-50 to-slate-100 px-6 py-3 border-t border-slate-200">
+                <Link href="/dashboard/listings" className="text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-smooth inline-flex items-center">
+                  View all
+                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
             </div>
 
-            <div className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
+            {/* Pending Applications Card */}
+            <div className="bg-white rounded-2xl shadow-premium border border-slate-200 overflow-hidden transition-smooth hover:shadow-premium-lg hover:border-indigo-200">
+              <div className="p-6">
                 <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <MessageSquare className="h-6 w-6 text-gray-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="h-6 w-6 text-white" />
                   </div>
-                  <div className="ml-5 w-0 flex-1">
-                    <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
-                        Pending Applications
-                      </dt>
-                      <dd className="flex items-baseline">
-                        <div className="text-2xl font-semibold text-gray-900">
-                          {stats.pendingApplications}
-                        </div>
-                      </dd>
-                    </dl>
+                  <div className="ml-4 flex-1">
+                    <dt className="text-sm font-semibold text-slate-500 truncate">
+                      Pending Applications
+                    </dt>
+                    <dd className="mt-1">
+                      <div className="text-3xl font-bold text-slate-900">
+                        {stats.pendingApplications}
+                      </div>
+                    </dd>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-5 py-3">
-                <Link href="/dashboard/applications" className="text-sm text-blue-600 hover:text-blue-500">
-                  Review →
+              <div className="bg-gradient-to-r from-slate-50 to-slate-100 px-6 py-3 border-t border-slate-200">
+                <Link href="/dashboard/applications" className="text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-smooth inline-flex items-center">
+                  Review
+                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="mt-8">
-            <h2 className="text-lg font-medium text-gray-900">Quick Actions</h2>
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Quick Actions */}
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">Quick Actions</h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <Link
                 href="/dashboard/orgs/new"
-                className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                className="group relative rounded-2xl border-2 border-slate-200 bg-white px-8 py-6 shadow-premium hover:shadow-premium-lg hover:border-indigo-300 transition-smooth"
               >
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900">Create Organization</h3>
-                  <p className="mt-1 text-sm text-gray-500">Set up a new sports organization</p>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-smooth">Create Organization</h3>
+                  <p className="mt-2 text-sm text-slate-600 font-medium">Set up a new sports organization</p>
                 </div>
               </Link>
 
               <Link
                 href="/dashboard/listings/new"
-                className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                className="group relative rounded-2xl border-2 border-slate-200 bg-white px-8 py-6 shadow-premium hover:shadow-premium-lg hover:border-indigo-300 transition-smooth"
               >
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900">Post New Listing</h3>
-                  <p className="mt-1 text-sm text-gray-500">Create a roster spot or tryout</p>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-smooth">Post New Listing</h3>
+                  <p className="mt-2 text-sm text-slate-600 font-medium">Create a roster spot or tryout</p>
                 </div>
               </Link>
 
               <Link
                 href="/dashboard/sites"
-                className="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                className="group relative rounded-2xl border-2 border-slate-200 bg-white px-8 py-6 shadow-premium hover:shadow-premium-lg hover:border-indigo-300 transition-smooth"
               >
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900">Edit Team Site</h3>
-                  <p className="mt-1 text-sm text-gray-500">Update your team's mini-site</p>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-smooth">Edit Team Site</h3>
+                  <p className="mt-2 text-sm text-slate-600 font-medium">Update your team's mini-site</p>
                 </div>
               </Link>
             </div>
@@ -207,10 +220,13 @@ export default async function DashboardPage() {
         </>
       ) : (
         <div className="mt-8">
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+          <div className="bg-gradient-to-r from-amber-50 to-amber-100 border-l-4 border-amber-500 rounded-r-xl p-6 shadow-premium">
             <div className="flex">
-              <div className="ml-3">
-                <p className="text-sm text-yellow-700">
+              <div className="flex-shrink-0">
+                <TrendingUp className="h-6 w-6 text-amber-600" />
+              </div>
+              <div className="ml-4">
+                <p className="text-sm font-semibold text-amber-800">
                   You're signed in as a parent. To access coach features, please contact your organization administrator.
                 </p>
               </div>
