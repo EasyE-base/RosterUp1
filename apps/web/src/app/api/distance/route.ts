@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
 	const { origin, destinations } = (await req.json()) as { origin: string; destinations: string[] };
 	if (!origin || !destinations?.length) {
