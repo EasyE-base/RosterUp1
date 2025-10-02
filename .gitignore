@@ -1,3 +1,31 @@
+# Environment variables
 .env
 .env.local
 .env.*.local
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+build
+dist
+
+# Testing
+coverage
+*.tsbuildinfo
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+*.pem
+
+# Local
+.turbo
