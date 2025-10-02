@@ -1,7 +1,32 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "NEXT_PUBLIC_APP_URL",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+    "GOOGLE_MAPS_API_KEY",
+    "STRIPE_SECRET_KEY",
+    "STRIPE_WEBHOOK_SECRET",
+    "STRIPE_CONNECT_APP_FEE_BPS",
+    "SUPABASE_SERVICE_ROLE_KEY"
+  ],
   "tasks": {
-    "build": { "dependsOn": ["^build"], "outputs": ["dist/**", ".next/**"] },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"],
+      "env": [
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "NEXT_PUBLIC_APP_URL",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+        "GOOGLE_MAPS_API_KEY",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "STRIPE_CONNECT_APP_FEE_BPS",
+        "SUPABASE_SERVICE_ROLE_KEY"
+      ]
+    },
     "dev": { },
     "lint": { }
   }
