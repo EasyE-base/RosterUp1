@@ -13,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "RosterUp - The All-in-One Platform for Youth Sports",
-  description: "Simplify team management, streamline tryouts, and connect parents with the perfect teams. All in one beautiful platform.",
+  title: "RosterUp - Find Your Perfect Travel Sports Team",
+  description: "The marketplace connecting talented players with elite travel sports teams. Browse teams, showcase your skills, and get recruited.",
 };
 
 export default function RootLayout({

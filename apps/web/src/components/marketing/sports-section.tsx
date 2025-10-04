@@ -6,53 +6,53 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const sports = [
-  { 
-    name: 'Baseball', 
-    icon: '⚾', 
+  {
+    name: 'Baseball',
+    icon: '⚾',
     color: 'from-red-500 to-red-600',
-    features: ['Live scoring', 'Pitch tracking', 'Player stats']
+    features: ['Travel teams', 'Showcase leagues', 'Elite programs']
   },
-  { 
-    name: 'Softball', 
-    icon: '🥎', 
+  {
+    name: 'Softball',
+    icon: '🥎',
     color: 'from-yellow-500 to-yellow-600',
-    features: ['Live scoring', 'Player stats', 'Tournament brackets']
+    features: ['Fastpitch teams', 'Tournament rosters', 'Select programs']
   },
-  { 
-    name: 'Basketball', 
-    icon: '🏀', 
+  {
+    name: 'Basketball',
+    icon: '🏀',
     color: 'from-orange-500 to-orange-600',
-    features: ['Shot charts', 'Game clock', 'Team stats']
+    features: ['AAU teams', 'Travel circuits', 'Elite academies']
   },
-  { 
-    name: 'Football', 
-    icon: '🏈', 
+  {
+    name: 'Football',
+    icon: '🏈',
     color: 'from-green-600 to-green-700',
-    features: ['Play tracking', 'Drive charts', 'Player stats']
+    features: ['7v7 teams', 'Travel squads', 'Elite programs']
   },
-  { 
-    name: 'Volleyball', 
-    icon: '🏐', 
+  {
+    name: 'Volleyball',
+    icon: '🏐',
     color: 'from-blue-500 to-blue-600',
-    features: ['Rotation tracking', 'Serve stats', 'Set analysis']
+    features: ['Club teams', 'Travel rosters', 'Competitive leagues']
   },
-  { 
-    name: 'Soccer', 
-    icon: '⚽', 
+  {
+    name: 'Soccer',
+    icon: '⚽',
     color: 'from-emerald-500 to-emerald-600',
-    features: ['Formation tracking', 'Shot maps', 'Match events']
+    features: ['Club teams', 'Academy programs', 'Select squads']
   },
-  { 
-    name: 'Lacrosse', 
-    icon: '🥍', 
+  {
+    name: 'Lacrosse',
+    icon: '🥍',
     color: 'from-purple-500 to-purple-600',
-    features: ['Face-off stats', 'Shot tracking', 'Penalty tracking']
+    features: ['Club teams', 'Tournament rosters', 'Elite leagues']
   },
-  { 
-    name: 'All Sports', 
-    icon: '🏆', 
+  {
+    name: 'All Sports',
+    icon: '🏆',
     color: 'from-gray-600 to-gray-700',
-    features: ['Universal features', 'Custom sports', 'Multi-sport athletes']
+    features: ['Multi-sport athletes', 'Any competitive sport', 'All age groups']
   },
 ];
 

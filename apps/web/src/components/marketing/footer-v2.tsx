@@ -8,12 +8,12 @@ const sports = [
 ];
 
 const product = [
-  { name: 'Live Streaming', href: '/features/streaming' },
-  { name: 'Team Management', href: '/features/management' },
+  { name: 'Browse Teams', href: '/browse/listings' },
+  { name: 'Player Profiles', href: '/features/profiles' },
   { name: 'Tryout Management', href: '/features/tryouts' },
-  { name: 'Payment Processing', href: '/features/payments' },
-  { name: 'Team Sites', href: '/features/sites' },
-  { name: 'Mobile Apps', href: '/download' },
+  { name: 'Team Listings', href: '/features/teams' },
+  { name: 'Recruitment Tools', href: '/features/recruiting' },
+  { name: 'Pricing', href: '/pricing' },
 ];
 
 const resources = [
@@ -46,7 +46,7 @@ export function FooterV2() {
                 <span className="text-xl font-bold text-white">RosterUp</span>
               </div>
               <p className="text-gray-400 text-sm mb-6">
-                The all-in-one platform for youth sports management.
+                Connecting talented players with elite travel sports teams nationwide.
               </p>
               
               {/* Social links */}

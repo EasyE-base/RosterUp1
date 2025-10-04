@@ -8,27 +8,27 @@ import { ArrowRight, Users, Calendar, DollarSign, MessageSquare, BarChart3, Glob
 
 const features = [
   {
-    title: 'Stream',
-    description: 'Share games live with families who can\'t make it. Built-in streaming with no extra equipment needed.',
+    title: 'Browse Teams',
+    description: 'Discover travel sports teams in your area. Filter by sport, age group, skill level, and location to find the perfect fit.',
     icon: Globe,
     image: '/streaming-preview.jpg',
-    link: '/features/streaming',
+    link: '/browse/listings',
     color: 'from-purple-500 to-pink-500',
   },
   {
-    title: 'Manage',
-    description: 'Keep your entire team organized with rosters, schedules, and instant messaging all in one place.',
+    title: 'Showcase Talent',
+    description: 'Create your player profile with stats, videos, and achievements. Stand out to coaches recruiting for their rosters.',
     icon: Users,
     image: '/manage-preview.jpg',
-    link: '/features/management',
+    link: '/features/profiles',
     color: 'from-blue-500 to-cyan-500',
   },
   {
-    title: 'Recruit',
-    description: 'Find the perfect players with smart tryout management and automated application processing.',
+    title: 'Manage Tryouts',
+    description: 'Coaches: streamline your recruitment process. Accept applications, schedule tryouts, and build your dream roster.',
     icon: Calendar,
     image: '/recruit-preview.jpg',
-    link: '/features/recruiting',
+    link: '/features/tryouts',
     color: 'from-green-500 to-emerald-500',
   },
 ];
@@ -52,7 +52,7 @@ export function FeaturesV2() {
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              From scheduling practice to sharing game highlights, RosterUp is your command center before, during, and after game day.
+              Whether you're a player seeking the right team or a coach building your roster, RosterUp connects you with opportunities to compete at the next level.
             </p>
           </motion.div>
 

@@ -26,28 +26,31 @@ export function HeroV2() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
-              Manage teams,
+              Find your team.
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                find players,
+                Get discovered.
               </span>
               <br />
-              connect families
+              Play your sport.
             </h1>
 
             <p className="mt-6 text-xl text-gray-300 max-w-lg">
-              Streamline your season with the #1-rated youth sports management platform. 
-              Always free for coaches!
+              The marketplace connecting travel sports teams with talented players.
+              Browse teams, showcase your skills, and join the perfect roster.
             </p>
 
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button size="xl" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
-                <Download className="mr-2 h-5 w-5" />
-                Download RosterUp
+              <Button size="xl" className="bg-blue-600 hover:bg-blue-700 text-white px-8" asChild>
+                <Link href="/browse/listings">
+                  Browse Teams
+                </Link>
               </Button>
-              <Button size="xl" variant="outline" className="border-gray-600 text-white hover:bg-gray-800">
-                Learn More
+              <Button size="xl" variant="outline" className="border-gray-600 text-white hover:bg-gray-800" asChild>
+                <Link href="/auth/signup">
+                  Join as Coach
+                </Link>
               </Button>
             </div>
 

@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/container';
 
 const stats = [
-  { value: '50K+', label: 'Teams' },
-  { value: '2M+', label: 'Games Managed' },
-  { value: '5M+', label: 'Active Users' },
-  { value: '4.9/5', label: 'App Rating' },
+  { value: '10,000+', label: 'Active Teams' },
+  { value: '50,000+', label: 'Players' },
+  { value: '500+', label: 'Cities' },
+  { value: '100%', label: 'Free to Browse' },
 ];
 
 export function StatsSection() {
