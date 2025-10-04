@@ -5,7 +5,7 @@ import { FeaturesMinimal } from '@/components/marketing/features-minimal';
 import { SportsGallery } from '@/components/marketing/sports-gallery';
 import { TestimonialsMinimal } from '@/components/marketing/testimonials-minimal';
 import { CTAMinimal } from '@/components/marketing/cta-minimal';
-import { FooterV2 } from '@/components/marketing/footer-v2';
+import { FooterMinimal } from '@/components/marketing/footer-minimal';
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
         <TestimonialsMinimal />
         <CTAMinimal />
       </main>
-      <FooterV2 />
+      <FooterMinimal />
     </>
   );
 }

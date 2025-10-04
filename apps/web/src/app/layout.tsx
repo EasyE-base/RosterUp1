@@ -13,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "RosterUp - Find Your Perfect Travel Sports Team",
-  description: "The marketplace connecting talented players with elite travel sports teams. Browse teams, showcase your skills, and get recruited.",
+  title: "RosterUp - Where Elite Athletes Meet Their Teams",
+  description: "The premier marketplace connecting exceptional talent with championship-caliber travel sports programs. Discover teams, showcase your skills, compete at the highest level.",
 };
 
 export default function RootLayout({
