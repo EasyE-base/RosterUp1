@@ -6,6 +6,18 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
+    // Debug: Check environment variables
+    const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const hasKey = !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!hasUrl || !hasKey) {
+      console.error('Missing env vars:', { hasUrl, hasKey });
+      return NextResponse.json(
+        { error: 'Server configuration error - missing environment variables', debug: { hasUrl, hasKey } },
+        { status: 500 }
+      );
+    }
+
     const supabase = createRouteHandlerClient({ cookies });
     const searchParams = request.nextUrl.searchParams;
     const sport = searchParams.get('sport');
