@@ -1,0 +1,4 @@
+{
+  "buildCommand": "cd ../.. && pnpm install && pnpm --filter=web build",
+  "installCommand": "npm install -g pnpm@10.17.1"
+}
