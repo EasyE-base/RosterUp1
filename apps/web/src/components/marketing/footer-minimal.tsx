@@ -44,10 +44,12 @@ export function FooterMinimal() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12">
             {/* Brand Column */}
             <div className="col-span-2">
-              <Link href="/" className="inline-flex items-center space-x-2 mb-6 group">
-                <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-500/50 transition-all">
-                  <span className="text-white font-black text-xl">R</span>
-                </div>
+              <Link href="/" className="inline-flex items-center space-x-3 mb-6 group">
+                <img
+                  src="/rosterup-logo.png"
+                  alt="RosterUp"
+                  className="h-8 w-auto transition-all group-hover:scale-105"
+                />
                 <span className="text-2xl font-black text-white tracking-tight">
                   RosterUp
                 </span>
