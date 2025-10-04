@@ -51,19 +51,19 @@ export function FooterV2() {
               
               {/* Social links */}
               <div className="flex space-x-4">
-                <Link href="#" className="text-gray-400 hover:text-white transition">
+                <Link href="#" prefetch={false} className="text-gray-400 hover:text-white transition">
                   <Facebook className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition">
+                <Link href="#" prefetch={false} className="text-gray-400 hover:text-white transition">
                   <Twitter className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition">
+                <Link href="#" prefetch={false} className="text-gray-400 hover:text-white transition">
                   <Instagram className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition">
+                <Link href="#" prefetch={false} className="text-gray-400 hover:text-white transition">
                   <Youtube className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition">
+                <Link href="#" prefetch={false} className="text-gray-400 hover:text-white transition">
                   <Linkedin className="w-5 h-5" />
                 </Link>
               </div>
@@ -77,6 +77,7 @@ export function FooterV2() {
                   <li key={sport}>
                     <Link 
                       href={`/sports/${sport.toLowerCase().replace(' ', '-')}`}
+                      prefetch={false}
                       className="text-gray-400 hover:text-white text-sm transition"
                     >
                       {sport}
@@ -94,6 +95,7 @@ export function FooterV2() {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
+                      prefetch={false}
                       className="text-gray-400 hover:text-white text-sm transition"
                     >
                       {item.name}
@@ -111,6 +113,7 @@ export function FooterV2() {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
+                      prefetch={false}
                       className="text-gray-400 hover:text-white text-sm transition"
                     >
                       {item.name}
@@ -128,6 +131,7 @@ export function FooterV2() {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
+                      prefetch={false}
                       className="text-gray-400 hover:text-white text-sm transition"
                     >
                       {item.name}
@@ -141,13 +145,13 @@ export function FooterV2() {
           {/* Bottom section */}
           <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-wrap gap-4 mb-4 md:mb-0">
-              <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition">
+              <Link href="/privacy" prefetch={false} className="text-gray-400 hover:text-white text-sm transition">
                 Privacy
               </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition">
+              <Link href="/terms" prefetch={false} className="text-gray-400 hover:text-white text-sm transition">
                 Terms
               </Link>
-              <Link href="/cookies" className="text-gray-400 hover:text-white text-sm transition">
+              <Link href="/cookies" prefetch={false} className="text-gray-400 hover:text-white text-sm transition">
                 Cookies
               </Link>
             </div>
