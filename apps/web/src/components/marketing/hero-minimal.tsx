@@ -32,7 +32,7 @@ export function HeroMinimal() {
         {/* Stadium field background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/stadium-field.jpg')" }}
+          style={{ backgroundImage: "url('/stadium-field.png')" }}
         />
 
         {/* Dark overlay for text readability */}
@@ -61,7 +61,7 @@ export function HeroMinimal() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl"
           >
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-[0.95] tracking-tight mb-8">
+            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-[1.1] tracking-tight mb-12">
               Where Elite
               <br />
               Athletes Meet
@@ -71,13 +71,13 @@ export function HeroMinimal() {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mb-12 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mb-16 leading-relaxed">
               The premier marketplace connecting exceptional talent with
               championship-caliber travel sports programs.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6">
               <Button
                 size="xl"
                 className="bg-white text-gray-900 hover:bg-gray-100 font-semibold px-10 rounded-full shadow-2xl shadow-white/20"
@@ -102,7 +102,7 @@ export function HeroMinimal() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl ml-auto"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl ml-auto"
         >
           {features.map((feature, index) => (
             <motion.div

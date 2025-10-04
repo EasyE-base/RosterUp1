@@ -44,15 +44,12 @@ export function FooterMinimal() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12">
             {/* Brand Column */}
             <div className="col-span-2">
-              <Link href="/" className="inline-flex items-center space-x-3 mb-6 group">
+              <Link href="/" className="inline-flex items-center mb-6 group">
                 <img
                   src="/rosterup-logo.png"
                   alt="RosterUp"
-                  className="h-8 w-auto transition-all group-hover:scale-105"
+                  className="h-12 w-auto transition-all group-hover:scale-105"
                 />
-                <span className="text-2xl font-black text-white tracking-tight">
-                  RosterUp
-                </span>
               </Link>
               <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-8">
                 Connecting talented players with elite travel sports teams nationwide.
