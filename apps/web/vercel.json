@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd ../.. && npm install -g pnpm@10.17.1 && pnpm install --no-frozen-lockfile && pnpm --filter=web build",
+  "installCommand": "echo Skipping default install",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
+}
