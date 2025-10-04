@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm install -g pnpm@10.17.1 && cd ../.. && pnpm install --no-frozen-lockfile && pnpm --filter=web build",
-  "installCommand": "echo Skipping default install",
+  "buildCommand": "cd ../.. && corepack enable && corepack prepare pnpm@10.17.1 --activate && pnpm install --no-frozen-lockfile && pnpm --filter=web build",
+  "installCommand": "cd ../.. && corepack enable && corepack prepare pnpm@10.17.1 --activate && pnpm install --filter=web --prod=false",
   "framework": "nextjs",
   "outputDirectory": ".next"
 }
