@@ -27,7 +27,7 @@ const testimonials = [
 
 export function TestimonialsV2() {
   return (
-    <section className="py-20 bg-gray-900 relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-b from-black via-gray-950 to-gray-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-[128px] opacity-20" />

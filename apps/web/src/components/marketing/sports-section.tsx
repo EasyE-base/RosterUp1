@@ -58,7 +58,7 @@ const sports = [
 
 export function SportsSection() {
   return (
-    <section className="py-20 bg-black">
+    <section className="py-32 bg-gradient-to-b from-gray-950 to-black">
       <Container>
         <div className="text-center mb-16">
           <motion.h2
