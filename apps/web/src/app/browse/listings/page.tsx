@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, MapPin, Filter, Loader2, Calendar, DollarSign, Users } from 'lucide-react';
 import Link from 'next/link';
+import { HeaderMinimal } from '@/components/marketing/header-minimal';
 
 interface Listing {
   id: string;
@@ -132,8 +133,10 @@ export default function BrowseListingsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <HeaderMinimal />
+
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-600 border-b border-indigo-700/20">
+      <div className="bg-gradient-to-r from-indigo-600 to-blue-600 border-b border-indigo-700/20 mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h1 className="text-4xl font-extrabold text-white tracking-tight">Browse Open Positions</h1>
           <p className="mt-3 text-lg text-indigo-100">
@@ -372,10 +375,49 @@ export default function BrowseListingsPage() {
             <div className="w-20 h-20 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-6">
               <Filter className="h-10 w-10 text-slate-400" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">No positions found</h3>
-            <p className="mt-3 text-slate-600 max-w-md mx-auto">
+            <h3 className="text-xl font-bold text-slate-900 mb-3">No positions found</h3>
+            <p className="text-slate-600 max-w-md mx-auto mb-8">
               Try adjusting your filters or search terms to discover more opportunities
             </p>
+
+            {/* Recovery Actions */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <button
+                onClick={() => {
+                  setFilters({ sport: '', state: '', city: '', minAge: '', maxAge: '', search: '' });
+                }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors"
+              >
+                <Filter className="h-5 w-5" />
+                Clear All Filters
+              </button>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-slate-200 text-slate-700 font-semibold rounded-xl hover:bg-slate-50 transition-colors"
+              >
+                View All Sports
+              </Link>
+            </div>
+
+            {/* Featured Suggestion */}
+            <div className="mt-12 max-w-2xl mx-auto">
+              <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">
+                Popular Searches
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {['Baseball', 'Basketball', 'Soccer', 'Softball'].map((sport) => (
+                  <button
+                    key={sport}
+                    onClick={() => {
+                      setFilters({ ...filters, sport: sport.toLowerCase() });
+                    }}
+                    className="px-5 py-2 bg-white border border-slate-200 rounded-full text-slate-700 hover:bg-slate-50 hover:border-indigo-300 transition-all font-medium"
+                  >
+                    {sport}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>
