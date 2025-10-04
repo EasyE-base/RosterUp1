@@ -1,5 +1,5 @@
-import { HeaderV2 } from '@/components/marketing/header-v2';
-import { HeroV2 } from '@/components/marketing/hero-v2';
+import { HeaderMinimal } from '@/components/marketing/header-minimal';
+import { HeroMinimal } from '@/components/marketing/hero-minimal';
 import { FeaturesV2 } from '@/components/marketing/features-v2';
 import { StatsSection } from '@/components/marketing/stats-section';
 import { SportsSection } from '@/components/marketing/sports-section';
@@ -10,9 +10,9 @@ import { FooterV2 } from '@/components/marketing/footer-v2';
 export default function HomePage() {
   return (
     <>
-      <HeaderV2 />
+      <HeaderMinimal />
       <main>
-        <HeroV2 />
+        <HeroMinimal />
         <StatsSection />
         <FeaturesV2 />
         <SportsSection />
