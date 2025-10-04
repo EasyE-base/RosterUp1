@@ -48,7 +48,7 @@ export function FooterMinimal() {
                 <img
                   src="/rosterup-logo.png"
                   alt="RosterUp"
-                  className="h-12 w-auto transition-all group-hover:scale-105"
+                  className="h-20 w-auto transition-all group-hover:scale-105"
                 />
               </Link>
               <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-8">

@@ -35,13 +35,13 @@ export function HeaderMinimal() {
       }`}
     >
       <Container>
-        <nav className="flex items-center justify-between h-20">
+        <nav className="flex items-center justify-between h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <img
               src="/rosterup-logo.png"
               alt="RosterUp"
-              className="h-16 w-auto transition-all group-hover:scale-105"
+              className="h-24 w-auto transition-all group-hover:scale-105"
             />
           </Link>
 
