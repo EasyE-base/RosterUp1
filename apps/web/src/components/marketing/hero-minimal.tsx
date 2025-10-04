@@ -29,12 +29,18 @@ export function HeroMinimal() {
     <section className="relative h-screen w-full overflow-hidden">
       {/* Hero Background - Stadium Image with Gradient Overlay */}
       <div className="absolute inset-0">
-        {/* Placeholder for stadium image - will use unsplash or custom image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
+        {/* Stadium field background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/stadium-field.jpg')" }}
+        />
+
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50" />
 
         {/* Gradient overlays for premium edge lighting effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-transparent to-pink-500/20 opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-transparent to-indigo-500/20 opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
         {/* Subtle noise texture for depth */}
         <div
