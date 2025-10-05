@@ -57,7 +57,7 @@ const sports = [
 
 export function SportsGallery() {
   return (
-    <section className="relative py-32 bg-black">
+    <section className="relative py-20 lg:py-32 bg-black">
       <Container>
         {/* Section Header */}
         <motion.div
@@ -65,9 +65,9 @@ export function SportsGallery() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-32"
         >
-          <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Every Sport.
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
@@ -80,7 +80,7 @@ export function SportsGallery() {
         </motion.div>
 
         {/* Sports Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {sports.map((sport, index) => (
             <motion.div
               key={sport.name}

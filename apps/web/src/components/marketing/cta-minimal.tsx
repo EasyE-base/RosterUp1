@@ -38,7 +38,7 @@ export function CTAMinimal() {
           </div>
 
           {/* Headline */}
-          <h2 className="text-6xl lg:text-7xl font-black text-white mb-8 leading-tight">
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-8 leading-tight">
             Start Your Journey
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
@@ -55,7 +55,8 @@ export function CTAMinimal() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button
               size="xl"
-              className="bg-white text-gray-900 hover:bg-gray-100 font-bold px-12 rounded-full shadow-2xl shadow-white/20 text-lg group"
+              variant="solid-light"
+              className="group"
               asChild
             >
               <Link href="/browse/listings">
@@ -67,7 +68,7 @@ export function CTAMinimal() {
             <Button
               size="xl"
               variant="outline"
-              className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm font-bold px-12 rounded-full text-lg"
+              className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm font-bold"
               asChild
             >
               <Link href="/auth/signup">Join as Coach</Link>

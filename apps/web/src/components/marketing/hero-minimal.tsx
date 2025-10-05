@@ -52,7 +52,7 @@ export function HeroMinimal() {
       </div>
 
       {/* Content */}
-      <Container className="relative h-full flex flex-col justify-between py-32">
+      <Container className="relative h-full flex flex-col justify-between py-32 pt-48">
         {/* Main Headline - Left Side */}
         <div className="flex-1 flex items-center">
           <motion.div
@@ -61,7 +61,7 @@ export function HeroMinimal() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl"
           >
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-[1.1] tracking-tight mb-12">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-12">
               Where Elite
               <br />
               Athletes Meet
@@ -80,7 +80,7 @@ export function HeroMinimal() {
             <div className="flex flex-col sm:flex-row gap-6">
               <Button
                 size="xl"
-                className="bg-white text-gray-900 hover:bg-gray-100 font-semibold px-10 rounded-full shadow-2xl shadow-white/20"
+                variant="solid-light"
                 asChild
               >
                 <Link href="/browse/listings">Browse Teams</Link>
@@ -88,7 +88,7 @@ export function HeroMinimal() {
               <Button
                 size="xl"
                 variant="outline"
-                className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm font-semibold px-10 rounded-full"
+                className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm font-semibold"
                 asChild
               >
                 <Link href="/auth/signup">Join as Coach</Link>

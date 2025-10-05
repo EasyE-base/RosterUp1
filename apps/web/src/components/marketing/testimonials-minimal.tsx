@@ -27,7 +27,7 @@ const testimonials = [
 
 export function TestimonialsMinimal() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
+    <section className="relative py-20 lg:py-32 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full filter blur-[128px] opacity-10" />
@@ -41,9 +41,9 @@ export function TestimonialsMinimal() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-32"
         >
-          <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Trusted by Athletes
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
@@ -53,7 +53,7 @@ export function TestimonialsMinimal() {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-12">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}

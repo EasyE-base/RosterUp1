@@ -12,7 +12,7 @@ const stats = [
 
 export function StatsMinimal() {
   return (
-    <section className="relative py-32 bg-black">
+    <section className="relative py-24 bg-black">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black opacity-50" />
 

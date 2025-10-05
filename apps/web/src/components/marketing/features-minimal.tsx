@@ -32,7 +32,7 @@ const features = [
 
 export function FeaturesMinimal() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
+    <section className="relative py-20 lg:py-32 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
       <Container>
         {/* Section Header */}
         <motion.div
@@ -40,9 +40,9 @@ export function FeaturesMinimal() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="text-center mb-32"
         >
-          <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Everything You Need to
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
@@ -55,7 +55,7 @@ export function FeaturesMinimal() {
         </motion.div>
 
         {/* Feature Cards */}
-        <div className="space-y-8">
+        <div className="space-y-20">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -90,7 +90,7 @@ export function FeaturesMinimal() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/40 backdrop-blur-sm font-semibold rounded-full group-hover:border-white/60 transition-all duration-300"
+                      className="border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/40 backdrop-blur-sm font-semibold group-hover:border-white/60 transition-all duration-300"
                       asChild
                     >
                       <Link href={feature.link}>

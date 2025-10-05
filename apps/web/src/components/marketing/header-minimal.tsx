@@ -35,13 +35,13 @@ export function HeaderMinimal() {
       }`}
     >
       <Container>
-        <nav className="flex items-center justify-between h-28">
+        <nav className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <img
               src="/rosterup-logo.png"
               alt="RosterUp"
-              className="h-16 md:h-24 w-auto transition-all group-hover:scale-105"
+              className="h-12 md:h-16 w-auto transition-all group-hover:scale-105"
             />
           </Link>
 
@@ -62,7 +62,7 @@ export function HeaderMinimal() {
           <div className="hidden md:block">
             <Button
               size="lg"
-              className="bg-white text-gray-900 hover:bg-gray-100 font-semibold px-8 rounded-full shadow-lg shadow-white/20"
+              variant="solid-light"
               asChild
             >
               <Link href="/auth/signup">Get Started</Link>
@@ -98,7 +98,8 @@ export function HeaderMinimal() {
               ))}
               <Button
                 size="lg"
-                className="bg-white text-gray-900 hover:bg-gray-100 font-semibold rounded-full w-full mt-4"
+                variant="solid-light"
+                className="w-full mt-4"
                 asChild
               >
                 <Link href="/auth/signup">Get Started</Link>
