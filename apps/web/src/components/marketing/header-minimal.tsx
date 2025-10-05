@@ -41,7 +41,7 @@ export function HeaderMinimal() {
             <img
               src="/rosterup-logo.png"
               alt="RosterUp"
-              className="h-16 md:h-24 w-auto transition-all group-hover:scale-105"
+              className="h-16 md:h-24 w-auto transition-all group-hover:scale-105 mix-blend-screen brightness-110"
             />
           </Link>
 
