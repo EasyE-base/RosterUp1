@@ -78,7 +78,7 @@ export default async function ApplicationsPage() {
               <img
                 className="h-16 w-16 rounded-full ring-2 ring-slate-200"
                 src={app.kids.photo_url}
-                alt={app.kids.first_name}
+                alt={`${app.kids.first_name} ${app.kids.last_name}`}
               />
             ) : (
               <div className="h-16 w-16 rounded-full bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center ring-2 ring-slate-200">

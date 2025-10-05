@@ -57,7 +57,7 @@ const sports = [
 
 export function SportsGallery() {
   return (
-    <section className="relative py-20 lg:py-32 bg-black">
+    <section className="relative py-32 lg:py-48 bg-black">
       <Container>
         {/* Section Header */}
         <motion.div
@@ -67,10 +67,10 @@ export function SportsGallery() {
           viewport={{ once: true }}
           className="text-center mb-32"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-black text-white mb-6">
             Every Sport.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+            <span className="text-cyan-400">
               Every Level.
             </span>
           </h2>

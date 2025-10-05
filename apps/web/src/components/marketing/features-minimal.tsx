@@ -32,7 +32,7 @@ const features = [
 
 export function FeaturesMinimal() {
   return (
-    <section className="relative py-20 lg:py-32 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
+    <section className="relative py-32 lg:py-48 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
       <Container>
         {/* Section Header */}
         <motion.div
@@ -42,10 +42,10 @@ export function FeaturesMinimal() {
           viewport={{ once: true }}
           className="text-center mb-32"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-black text-white mb-6">
             Everything You Need to
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+            <span className="text-cyan-400">
               Compete at the Highest Level
             </span>
           </h2>
@@ -88,9 +88,8 @@ export function FeaturesMinimal() {
                       {feature.description}
                     </p>
                     <Button
-                      variant="outline"
+                      variant="apple-outline"
                       size="lg"
-                      className="border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/40 backdrop-blur-sm font-semibold group-hover:border-white/60 transition-all duration-300"
                       asChild
                     >
                       <Link href={feature.link}>

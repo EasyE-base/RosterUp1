@@ -12,7 +12,7 @@ const stats = [
 
 export function StatsMinimal() {
   return (
-    <section className="relative py-24 bg-black">
+    <section className="relative py-32 lg:py-48 bg-black">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black opacity-50" />
 
@@ -31,11 +31,11 @@ export function StatsMinimal() {
                 {/* Gradient glow effect */}
                 <div className="absolute inset-0 blur-2xl bg-gradient-to-r from-cyan-500 to-indigo-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
 
-                <div className="relative text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-100 to-gray-400 mb-3">
+                <div className="relative text-6xl lg:text-7xl font-black text-white mb-3">
                   {stat.value}
                 </div>
               </div>
-              <div className="text-sm lg:text-base text-gray-500 font-medium uppercase tracking-wider">
+              <div className="text-base lg:text-lg text-gray-400 font-medium uppercase tracking-wider">
                 {stat.label}
               </div>
             </motion.div>

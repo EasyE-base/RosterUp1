@@ -187,7 +187,7 @@ export default function PublicListingPage() {
               {listing.teams.logo_url ? (
                 <img
                   src={listing.teams.logo_url}
-                  alt={listing.teams.name}
+                  alt={`${listing.teams.name} logo`}
                   className="h-full w-full object-cover"
                 />
               ) : (

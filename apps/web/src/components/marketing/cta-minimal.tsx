@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function CTAMinimal() {
   return (
-    <section className="relative py-40 bg-black overflow-hidden">
+    <section className="relative py-40 lg:py-56 bg-black overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
@@ -38,10 +38,10 @@ export function CTAMinimal() {
           </div>
 
           {/* Headline */}
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-8 leading-tight">
+          <h2 className="text-3xl lg:text-4xl font-black text-white mb-8 leading-tight">
             Start Your Journey
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
+            <span className="text-cyan-400">
               Today
             </span>
           </h2>
@@ -55,7 +55,7 @@ export function CTAMinimal() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button
               size="xl"
-              variant="solid-light"
+              variant="apple-blue"
               className="group"
               asChild
             >
@@ -67,8 +67,7 @@ export function CTAMinimal() {
 
             <Button
               size="xl"
-              variant="outline"
-              className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm font-bold"
+              variant="apple-white"
               asChild
             >
               <Link href="/auth/signup">Join as Coach</Link>

@@ -168,7 +168,7 @@ export default async function ApplicationDetailPage({
                 {application.kids.photo_url ? (
                   <img
                     src={application.kids.photo_url}
-                    alt={application.kids.first_name}
+                    alt={`${application.kids.first_name} ${application.kids.last_name}`}
                     className="h-24 w-24 rounded-full mx-auto object-cover"
                   />
                 ) : (

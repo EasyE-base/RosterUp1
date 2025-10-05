@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { name: 'Teams', href: '/browse/listings' },
@@ -15,7 +14,6 @@ const navItems = [
 
 export function HeaderMinimal() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,23 +33,23 @@ export function HeaderMinimal() {
       }`}
     >
       <Container>
-        <nav className="flex items-center justify-between h-20">
+        <nav className="flex items-center justify-between h-24 md:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <img
               src="/rosterup-logo.png"
               alt="RosterUp"
-              className="h-12 md:h-16 w-auto transition-all group-hover:scale-105"
+              className="h-20 md:h-24 w-auto transition-all group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="flex items-center space-x-6 md:space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
               >
                 {item.name}
               </Link>
@@ -59,54 +57,17 @@ export function HeaderMinimal() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div>
             <Button
               size="lg"
-              variant="solid-light"
+              variant="apple-blue"
               asChild
             >
               <Link href="/auth/signup">Get Started</Link>
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
         </nav>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-6 border-t border-white/10">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-base font-medium text-white/70 hover:text-white transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Button
-                size="lg"
-                variant="solid-light"
-                className="w-full mt-4"
-                asChild
-              >
-                <Link href="/auth/signup">Get Started</Link>
-              </Button>
-            </div>
-          </div>
-        )}
       </Container>
     </header>
   );

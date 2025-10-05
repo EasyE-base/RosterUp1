@@ -162,7 +162,7 @@ export default function PublicTeamPage() {
               {team.logo_url ? (
                 <img
                   src={team.logo_url}
-                  alt={team.name}
+                  alt={`${team.name} logo`}
                   className="h-full w-full object-cover"
                 />
               ) : (

@@ -27,7 +27,7 @@ const testimonials = [
 
 export function TestimonialsMinimal() {
   return (
-    <section className="relative py-20 lg:py-32 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
+    <section className="relative py-32 lg:py-48 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full filter blur-[128px] opacity-10" />
@@ -43,10 +43,10 @@ export function TestimonialsMinimal() {
           viewport={{ once: true }}
           className="text-center mb-32"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-black text-white mb-6">
             Trusted by Athletes
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+            <span className="text-cyan-400">
               & Coaches Nationwide
             </span>
           </h2>

@@ -66,7 +66,7 @@ export function HeroMinimal() {
               <br />
               Athletes Meet
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
+              <span className="text-cyan-400">
                 Their Teams
               </span>
             </h1>
@@ -80,15 +80,14 @@ export function HeroMinimal() {
             <div className="flex flex-col sm:flex-row gap-6">
               <Button
                 size="xl"
-                variant="solid-light"
+                variant="apple-blue"
                 asChild
               >
                 <Link href="/browse/listings">Browse Teams</Link>
               </Button>
               <Button
                 size="xl"
-                variant="outline"
-                className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm font-semibold"
+                variant="apple-outline"
                 asChild
               >
                 <Link href="/auth/signup">Join as Coach</Link>

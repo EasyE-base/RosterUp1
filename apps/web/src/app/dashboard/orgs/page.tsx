@@ -76,7 +76,7 @@ export default async function OrgsPage() {
                   <img
                     className="h-12 w-12 rounded-full"
                     src={org.logo_url}
-                    alt={org.name}
+                    alt={`${org.name} logo`}
                   />
                 ) : (
                   <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">

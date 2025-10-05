@@ -133,7 +133,7 @@ export function ApplicationsList({
             {app.kids.photo_url ? (
               <img
                 src={app.kids.photo_url}
-                alt={app.kids.first_name}
+                alt={`${app.kids.first_name} ${app.kids.last_name}`}
                 className="h-12 w-12 rounded-full object-cover"
               />
             ) : (
