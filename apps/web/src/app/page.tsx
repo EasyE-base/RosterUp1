@@ -9,8 +9,8 @@ export default function HomePage() {
       {/* Removed the 10K+/50K+/500+/100% stats block */}
 
       {/* CTA Section */}
-      <section className="py-32 bg-white">
-        <div className="mx-auto max-w-[660px] px-4 text-center">
+      <section className="py-32 bg-white flex items-center justify-center">
+        <div className="w-full max-w-[660px] px-6 text-center">
           <h2 className="text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6">
             Start your journey today.
           </h2>
@@ -27,8 +27,8 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-gray-50 border-t border-gray-200">
-        <div className="mx-auto max-w-[980px] px-4">
+      <footer className="py-12 bg-gray-50 border-t border-gray-200 flex items-center justify-center">
+        <div className="w-full max-w-[980px] px-6">
           <div className="text-center text-[14px] text-gray-500">
             <p className="mb-4">© 2025 RosterUp. All rights reserved.</p>
             <div className="flex items-center justify-center space-x-6">

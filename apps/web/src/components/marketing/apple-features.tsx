@@ -19,11 +19,11 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 
 export function AppleFeatures() {
   return (
-    <section id="features" className="py-24 md:py-32 bg-white">
+    <section id="features" className="py-24 md:py-32 bg-white flex items-center justify-center">
       {/* Centered content wrapper */}
-      <div className="mx-auto max-w-[980px] px-6 text-center">
-        {/* Section Header */}
-        <div className="mb-20">
+      <div className="w-full max-w-[980px] px-6">
+        {/* Section Header - Centered */}
+        <div className="text-center mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6">
             Everything you need to
             <br />
@@ -34,7 +34,7 @@ export function AppleFeatures() {
           </p>
         </div>
 
-        {/* Feature Cards Grid - centered cards */}
+        {/* Feature Cards Grid */}
         <div className="grid md:grid-cols-3 gap-12 md:gap-16">
           <FeatureCard
             title="Browse Teams"
