@@ -28,7 +28,7 @@ export function AppleFeatures() {
             <br />
             compete at the highest level.
           </h2>
-          <p className="text-lg md:text-xl lg:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto">
+          <p className="text-lg md:text-xl lg:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto text-center">
             A comprehensive platform designed for ambitious athletes and championship-caliber programs.
           </p>
         </div>
