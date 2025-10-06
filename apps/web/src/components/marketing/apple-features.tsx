@@ -19,17 +19,16 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 
 export function AppleFeatures() {
   return (
-    <section id="features" className="py-24 md:py-32 bg-white flex items-center justify-center">
-      {/* Centered content wrapper */}
-      <div className="w-full max-w-[980px] px-6">
+    <section id="features" className="py-24 md:py-32 bg-white">
+      <div className="mx-auto max-w-[980px] px-6">
         {/* Section Header - Centered */}
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6 mx-auto">
             Everything you need to
             <br />
             compete at the highest level.
           </h2>
-          <p className="text-lg md:text-xl lg:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto">
+          <p className="text-lg md:text-xl lg:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto text-center">
             A comprehensive platform designed for ambitious athletes and championship-caliber programs.
           </p>
         </div>
