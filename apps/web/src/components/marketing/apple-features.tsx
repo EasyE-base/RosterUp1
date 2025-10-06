@@ -6,26 +6,35 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description }: FeatureCardProps) {
   return (
-    <div className="text-center">
-      <h3 className="text-[28px] font-semibold text-gray-900 mb-3">{title}</h3>
-      <p className="text-[17px] text-gray-600 leading-[1.47]">{description}</p>
+    <div className="text-center px-4">
+      <h3 className="text-2xl md:text-[28px] font-semibold text-gray-900 mb-4">
+        {title}
+      </h3>
+      <p className="text-base md:text-[17px] text-gray-600 leading-[1.47] max-w-sm mx-auto">
+        {description}
+      </p>
     </div>
   );
 }
 
 export function AppleFeatures() {
   return (
-    <section id="features" className="py-32 bg-white">
-      <div className="mx-auto max-w-[980px] px-4">
+    <section id="features" className="py-24 md:py-32 bg-white">
+      <div className="mx-auto max-w-[980px] px-6">
+        {/* Section Header - Properly Centered */}
         <div className="text-center mb-20">
-          <h2 className="text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-4">
-            Everything you need to<br />compete at the highest level.
+          <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6 mx-auto max-w-3xl">
+            Everything you need to
+            <br />
+            compete at the highest level.
           </h2>
-          <p className="text-[21px] text-gray-600 max-w-[660px] mx-auto">
+          <p className="text-lg md:text-xl lg:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto">
             A comprehensive platform designed for ambitious athletes and championship-caliber programs.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-16">
+
+        {/* Feature Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
           <FeatureCard
             title="Browse Teams"
             description="Discover elite travel sports teams across the nation. Filter by sport, location, and skill level."
