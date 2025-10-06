@@ -6,7 +6,7 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description }: FeatureCardProps) {
   return (
-    <div className="text-center px-4">
+    <div className="text-center">
       <h3 className="text-2xl md:text-[28px] font-semibold text-gray-900 mb-4">
         {title}
       </h3>
@@ -20,10 +20,11 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 export function AppleFeatures() {
   return (
     <section id="features" className="py-24 md:py-32 bg-white">
-      <div className="mx-auto max-w-[980px] px-6">
-        {/* Section Header - Properly Centered */}
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6 mx-auto max-w-3xl">
+      {/* Centered content wrapper */}
+      <div className="mx-auto max-w-[980px] px-6 text-center">
+        {/* Section Header */}
+        <div className="mb-20">
+          <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6">
             Everything you need to
             <br />
             compete at the highest level.
@@ -33,7 +34,7 @@ export function AppleFeatures() {
           </p>
         </div>
 
-        {/* Feature Cards Grid */}
+        {/* Feature Cards Grid - centered cards */}
         <div className="grid md:grid-cols-3 gap-12 md:gap-16">
           <FeatureCard
             title="Browse Teams"

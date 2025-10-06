@@ -1,64 +1,73 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 export function AppleHeader() {
-  return (
-    <header className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="mx-auto max-w-[980px]">
-        <nav className="flex h-14 items-center justify-between px-4 md:px-6">
-          {/* Logo */}
-          <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <Image
-              src="/rosterup-logo.png"
-              alt="RosterUp"
-              width={120}
-              height={32}
-              className="h-8 w-auto"
-              priority
-            />
-          </a>
+  const [scrolled, setScrolled] = useState(false);
 
-          {/* Centered Navigation */}
-          <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center space-x-8">
-            <a
-              href="/browse/listings"
-              className="text-[14px] font-medium text-gray-700 hover:text-blue-500 transition-colors"
-            >
-              Teams
-            </a>
-            <a
-              href="/players"
-              className="text-[14px] font-medium text-gray-700 hover:text-blue-500 transition-colors"
-            >
-              Players
-            </a>
-            <a
-              href="/coaches"
-              className="text-[14px] font-medium text-gray-700 hover:text-blue-500 transition-colors"
-            >
-              Coaches
-            </a>
-            <a
-              href="/how-it-works"
-              className="text-[14px] font-medium text-gray-700 hover:text-blue-500 transition-colors"
-            >
-              How It Works
-            </a>
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        'fixed top-0 z-50 w-full transition-all duration-300',
+        scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-100' : 'bg-transparent'
+      )}
+    >
+      <div className="mx-auto max-w-[1200px] px-6">
+        <nav className="grid grid-cols-[1fr_auto_1fr] items-center h-16">
+          {/* Left: Logo */}
+          <div className="justify-self-start">
+            <Link href="/" className="inline-flex items-center gap-2">
+              <Image
+                src="/rosterup-logo.png"
+                alt="RosterUp"
+                width={32}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
+              <span className="text-lg font-semibold tracking-tight">RosterUp</span>
+            </Link>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex items-center space-x-3">
-            <a
+          {/* Center: Nav */}
+          <div className="hidden md:flex items-center gap-8 justify-self-center">
+            <Link href="/browse/listings" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Teams
+            </Link>
+            <Link href="/players" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Players
+            </Link>
+            <Link href="/coaches" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Coaches
+            </Link>
+            <Link href="/how-it-works" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              How It Works
+            </Link>
+          </div>
+
+          {/* Right: CTAs */}
+          <div className="flex items-center gap-3 justify-self-end">
+            <Link
               href="/login"
-              className="text-[14px] font-medium text-gray-700 hover:text-blue-500 transition-colors px-3 py-1.5"
+              className="hidden sm:inline-flex h-10 items-center rounded-full px-4 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
               Sign In
-            </a>
-            <a
+            </Link>
+            <Link
               href="/auth/signup"
-              className="text-[14px] font-medium px-5 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all shadow-sm hover:shadow-md"
+              className="inline-flex h-10 items-center rounded-full bg-blue-500 px-6 text-sm font-medium text-white hover:bg-blue-600 transition-all shadow-sm"
             >
               Get Started
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

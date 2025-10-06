@@ -4,11 +4,11 @@ export function AppleHero() {
   return (
     <>
       <AppleHeader />
-      <section className="relative min-h-[100vh] flex items-center justify-center bg-gradient-to-b from-white to-gray-50 pt-14">
-        {/* Content Container */}
-        <div className="relative z-10 mx-auto max-w-[980px] px-6 text-center">
-          {/* Headline - Properly Centered */}
-          <h1 className="text-5xl md:text-6xl lg:text-[80px] font-semibold leading-[1.05] tracking-[-0.015em] text-gray-900 mb-6 mx-auto">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 pt-32">
+        {/* Content Container - Centered */}
+        <div className="mx-auto max-w-[980px] px-6 text-center">
+          {/* Headline - Perfectly Centered */}
+          <h1 className="text-5xl md:text-6xl lg:text-[80px] font-semibold leading-[1.05] tracking-[-0.015em] text-gray-900 mb-6">
             Where Elite
             <br />
             Athletes Meet
@@ -21,17 +21,17 @@ export function AppleHero() {
             The premier marketplace connecting exceptional talent with championship-caliber travel sports programs.
           </p>
 
-          {/* CTAs - Properly styled buttons */}
+          {/* CTAs - Consistent pill buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="/browse/listings"
-              className="inline-flex items-center justify-center px-8 py-3.5 text-[17px] font-medium rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-all shadow-sm hover:shadow-md min-w-[200px]"
+              className="inline-flex h-12 items-center justify-center px-8 text-[17px] font-medium rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-all shadow-sm hover:shadow-md min-w-[200px]"
             >
               Browse Teams
             </a>
             <a
               href="/auth/signup"
-              className="inline-flex items-center justify-center px-8 py-3.5 text-[17px] font-medium rounded-full bg-white text-blue-500 border-2 border-blue-500 hover:bg-blue-50 transition-all min-w-[200px]"
+              className="inline-flex h-12 items-center justify-center px-8 text-[17px] font-medium rounded-full bg-white text-blue-500 border-2 border-blue-500 hover:bg-blue-50 transition-all min-w-[200px]"
             >
               Join as Coach
             </a>
