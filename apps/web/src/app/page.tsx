@@ -9,12 +9,12 @@ export default function HomePage() {
       {/* Removed the 10K+/50K+/500+/100% stats block */}
 
       {/* CTA Section */}
-      <section className="py-32 bg-white text-center">
+      <section className="py-32 bg-white" style={{ textAlign: 'center' }}>
         <div className="mx-auto max-w-[660px] px-6">
-          <h2 className="text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6">
+          <h2 className="text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6" style={{ textAlign: 'center' }}>
             Start your journey today.
           </h2>
-          <p className="text-[21px] text-gray-600 mb-12">
+          <p className="text-[21px] text-gray-600 mb-12" style={{ textAlign: 'center' }}>
             Join thousands of athletes and coaches connecting on the premier platform for competitive youth sports.
           </p>
           <a
@@ -27,7 +27,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-gray-50 border-t border-gray-200 text-center">
+      <footer className="py-12 bg-gray-50 border-t border-gray-200" style={{ textAlign: 'center' }}>
         <div className="mx-auto max-w-[980px] px-6">
           <div className="text-[14px] text-gray-500">
             <p className="mb-4">© 2025 RosterUp. All rights reserved.</p>
