@@ -19,15 +19,12 @@ export function AppleFeatures() {
       <div className="mx-auto max-w-[980px] px-4">
         <div className="text-center mb-20">
           <h2 className="text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-4">
-            Everything you need to
-            <br />
-            compete at the highest level.
+            Everything you need to<br />compete at the highest level.
           </h2>
           <p className="text-[21px] text-gray-600 max-w-[660px] mx-auto">
             A comprehensive platform designed for ambitious athletes and championship-caliber programs.
           </p>
         </div>
-        
         <div className="grid md:grid-cols-3 gap-16">
           <FeatureCard
             title="Browse Teams"
