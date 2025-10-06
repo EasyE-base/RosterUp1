@@ -1,36 +1,13 @@
-import { AppleHero } from "@/components/marketing/apple-hero";
-import { AppleFeatures } from "@/components/marketing/apple-features";
+import { AppleHero } from '@/components/marketing/apple-hero';
+import { AppleFeatures } from '@/components/marketing/apple-features';
 
 export default function HomePage() {
   return (
     <main>
       <AppleHero />
       <AppleFeatures />
-      
-      {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="mx-auto max-w-[980px] px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-[48px] font-semibold text-gray-900">10K+</div>
-              <div className="text-[17px] text-gray-600">Active Teams</div>
-            </div>
-            <div>
-              <div className="text-[48px] font-semibold text-gray-900">50K+</div>
-              <div className="text-[17px] text-gray-600">Players</div>
-            </div>
-            <div>
-              <div className="text-[48px] font-semibold text-gray-900">500+</div>
-              <div className="text-[17px] text-gray-600">Cities</div>
-            </div>
-            <div>
-              <div className="text-[48px] font-semibold text-gray-900">100%</div>
-              <div className="text-[17px] text-gray-600">Free to Browse</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
+      {/* Removed the 10K+/50K+/500+/100% stats block */}
+
       {/* CTA Section */}
       <section className="py-32 bg-white">
         <div className="mx-auto max-w-[660px] px-4 text-center">
@@ -48,7 +25,7 @@ export default function HomePage() {
           </a>
         </div>
       </section>
-      
+
       {/* Footer */}
       <footer className="py-12 bg-gray-50 border-t border-gray-200">
         <div className="mx-auto max-w-[980px] px-4">
