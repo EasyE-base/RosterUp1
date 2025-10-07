@@ -19,22 +19,22 @@ function FeatureCard({ title, description }: FeatureCardProps) {
 
 export function AppleFeatures() {
   return (
-    <section id="features" className="py-24 md:py-32 bg-white text-center">
-      <div className="mx-auto max-w-[980px] px-6">
+    <section id="features" className="py-24 md:py-32 bg-white" style={{ textAlign: 'center' }}>
+      <div className="mx-auto max-w-[980px] px-6" style={{ textAlign: 'center' }}>
         {/* Section Header */}
-        <div className="mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6">
+        <div className="mb-20" style={{ textAlign: 'center' }}>
+          <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-6" style={{ textAlign: 'center' }}>
             Everything you need to
             <br />
             compete at the highest level.
           </h2>
-          <p className="text-lg md:text-xl lg:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto">
+          <p className="text-lg md:text-xl lg:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto" style={{ textAlign: 'center' }}>
             A comprehensive platform designed for ambitious athletes and championship-caliber programs.
           </p>
         </div>
 
         {/* Feature Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+        <div className="grid md:grid-cols-3 gap-12 md:gap-16" style={{ textAlign: 'center' }}>
           <FeatureCard
             title="Browse Teams"
             description="Discover elite travel sports teams across the nation. Filter by sport, location, and skill level."
