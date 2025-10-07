@@ -14,16 +14,18 @@ export function AppleHeader() {
   }, []);
 
   return (
-    <header className={cn(
-      'fixed top-0 z-50 w-full transition-all duration-300',
-      scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-100' : 'bg-transparent'
-    )}>
+    <header
+      className={cn(
+        'fixed top-0 z-50 w-full transition-all duration-300',
+        scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-100' : 'bg-transparent'
+      )}
+    >
       <div className="mx-auto max-w-[1200px] px-6">
         <nav className="grid grid-cols-[1fr_auto_1fr] items-center h-16">
           {/* Left: Logo */}
           <div className="justify-self-start">
             <Link href="/" className="inline-flex items-center gap-2">
-              <Image src="/rosterup-logo.png" alt="RosterUp" width={32} height={32} className="h-8 w-auto" priority />
+              <Image src="/rosterup-logo.png" alt="RosterUp" width={32} height={32} />
               <span className="text-lg font-semibold tracking-tight">RosterUp</span>
             </Link>
           </div>
