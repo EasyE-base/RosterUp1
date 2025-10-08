@@ -19,11 +19,12 @@ export function AppleHeader() {
         'fixed top-0 z-50 w-full transition-all duration-300',
         scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-100' : 'bg-transparent'
       )}
+      style={{ display: 'flex', justifyContent: 'center' }}
     >
-      <div className="mx-auto max-w-[1200px] px-6">
-        <nav className="grid grid-cols-[1fr_auto_1fr] items-center h-16">
+      <div style={{ width: '100%', maxWidth: '1200px', padding: '0 24px' }}>
+        <nav style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', height: '64px' }}>
           {/* Left: Logo */}
-          <div className="justify-self-start">
+          <div style={{ justifySelf: 'start' }}>
             <Link href="/" className="inline-flex items-center gap-2">
               <Image src="/rosterup-logo.png" alt="RosterUp" width={32} height={32} />
               <span className="text-lg font-semibold tracking-tight">RosterUp</span>
@@ -31,7 +32,7 @@ export function AppleHeader() {
           </div>
 
           {/* Center: Nav */}
-          <div className="hidden md:flex items-center gap-8 justify-self-center">
+          <div className="hidden md:flex items-center gap-8" style={{ justifySelf: 'center' }}>
             <Link href="/browse/listings" className="text-sm font-medium text-gray-700 hover:text-blue-600">Teams</Link>
             <Link href="/players" className="text-sm font-medium text-gray-700 hover:text-blue-600">Players</Link>
             <Link href="/coaches" className="text-sm font-medium text-gray-700 hover:text-blue-600">Coaches</Link>
@@ -39,7 +40,7 @@ export function AppleHeader() {
           </div>
 
           {/* Right: CTAs */}
-          <div className="flex items-center gap-3 justify-self-end">
+          <div className="flex items-center gap-3" style={{ justifySelf: 'end' }}>
             <Link href="/login" className="hidden sm:inline-flex h-11 items-center rounded-full px-4 text-sm font-medium text-gray-700 hover:text-gray-900">
               Sign In
             </Link>
