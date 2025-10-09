@@ -5,10 +5,9 @@ import Link from 'next/link';
 import { X, Menu } from 'lucide-react';
 
 const navItems = [
-  { name: 'Teams', href: '/browse/listings' },
+  { name: 'Browse Teams', href: '/browse/listings' },
+  { name: 'For Organizations', href: '/organizations' },
   { name: 'For Players', href: '/players' },
-  { name: 'For Coaches', href: '/coaches' },
-  { name: 'How It Works', href: '/how-it-works' },
 ];
 
 export function MobileMenu() {

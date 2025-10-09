@@ -2,24 +2,24 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "RosterUp helped my son find the perfect travel team. The process was seamless and the coaches were very responsive.",
-    author: "Sarah Johnson",
-    role: "Parent",
+    quote: "Managing all our age groups from 10U to 18U in one platform has been a game changer. We filled our roster spots faster than ever.",
+    author: "David Martinez",
+    role: "Organization Director",
     sport: "Baseball",
     rating: 5
   },
   {
-    quote: "As a coach, this platform streamlined our recruitment. We found talented players who were a perfect fit for our program.",
-    author: "Mike Chen",
-    role: "Head Coach",
-    sport: "Basketball",
-    rating: 5
-  },
-  {
-    quote: "I got discovered by a top AAU team through my RosterUp profile. The exposure was exactly what I needed.",
+    quote: "I created my profile and got invited to tryouts for three elite teams in my area. RosterUp made the process so simple.",
     author: "Jordan Williams",
     role: "Player",
     sport: "Soccer",
+    rating: 5
+  },
+  {
+    quote: "As a parent, I love that my daughter can showcase her skills and connect directly with organizations looking for talent.",
+    author: "Sarah Johnson",
+    role: "Parent",
+    sport: "Softball",
     rating: 5
   }
 ];
@@ -30,7 +30,7 @@ export function TestimonialsSection() {
       <div style={{ width: '100%', maxWidth: '1200px', padding: '0 24px', margin: '0 auto' }}>
         <div className="mb-16" style={{ textAlign: 'center' }}>
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
-            Trusted by Athletes & Coaches
+            Trusted by Players & Organizations
           </h2>
           <p className="text-lg text-gray-600" style={{ maxWidth: '600px', margin: '0 auto' }}>
             See what our community has to say about their experience with RosterUp.

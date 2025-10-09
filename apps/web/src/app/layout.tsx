@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { defaultMetadata } from "@/lib/metadata";
 
 // Force all pages to be dynamic (no static generation)
 export const dynamic = 'force-dynamic';
@@ -12,10 +13,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: "RosterUp - Where Elite Athletes Meet Their Teams",
-  description: "The premier marketplace connecting exceptional talent with championship-caliber travel sports programs. Discover teams, showcase your skills, compete at the highest level.",
-};
+export const metadata: Metadata = defaultMetadata;
 
 export default function RootLayout({
   children,

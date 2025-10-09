@@ -34,10 +34,9 @@ export function AppleHeader() {
 
           {/* Center: Nav */}
           <div className="hidden md:flex items-center gap-8" style={{ justifySelf: 'center' }}>
-            <Link href="/browse/listings" className="text-sm font-medium text-gray-700 hover:text-blue-600">Teams</Link>
-            <Link href="/players" className="text-sm font-medium text-gray-700 hover:text-blue-600">Players</Link>
-            <Link href="/coaches" className="text-sm font-medium text-gray-700 hover:text-blue-600">Coaches</Link>
-            <Link href="/how-it-works" className="text-sm font-medium text-gray-700 hover:text-blue-600">How It Works</Link>
+            <Link href="/browse/listings" className="text-sm font-medium text-gray-700 hover:text-blue-600">Browse Teams</Link>
+            <Link href="/organizations" className="text-sm font-medium text-gray-700 hover:text-blue-600">For Organizations</Link>
+            <Link href="/players" className="text-sm font-medium text-gray-700 hover:text-blue-600">For Players</Link>
           </div>
 
           {/* Right: CTAs */}

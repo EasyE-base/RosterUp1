@@ -6,7 +6,9 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, MapPin, Filter, Loader2, Calendar, DollarSign, Users } from 'lucide-react';
 import Link from 'next/link';
-import { HeaderMinimal } from '@/components/marketing/header-minimal';
+import { AppleHeader } from '@/components/navigation/apple-header';
+import { ListingCardSkeleton } from '@/components/ui/skeleton';
+import { Footer } from '@/components/footer/footer';
 
 interface Listing {
   id: string;
@@ -132,46 +134,48 @@ export default function BrowseListingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      <HeaderMinimal />
+    <div className="min-h-screen bg-white">
+      <AppleHeader />
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-600 border-b border-indigo-700/20 mt-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-4xl font-extrabold text-white tracking-tight">Browse Open Positions</h1>
-          <p className="mt-3 text-lg text-indigo-100">
-            Find tryouts and roster spots on travel sports teams
+      <div className="pt-28 pb-16 bg-gradient-to-b from-gray-50 to-white" style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ width: '100%', maxWidth: '1200px', padding: '0 24px', textAlign: 'center' }}>
+          <h1 className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-gray-900 tracking-[-0.003em] leading-[1.08] mb-4">
+            Browse Open Positions
+          </h1>
+          <p className="text-lg md:text-[21px] text-gray-600 leading-[1.381] max-w-[660px] mx-auto">
+            Find tryouts and roster spots on elite travel sports teams across the nation
           </p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white border-b border-slate-200 shadow-sm">
+      <div className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Search */}
             <div className="md:col-span-3">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search positions, teams, or organizations..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-white border border-slate-300 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-smooth placeholder:text-slate-400 font-medium text-slate-900 shadow-premium"
+                  className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder:text-gray-400 font-medium text-gray-900"
                 />
               </div>
             </div>
 
             {/* Sport Filter */}
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Sport
               </label>
               <select
                 value={sport}
                 onChange={(e) => setSport(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-smooth bg-white text-slate-900 font-medium"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 font-medium"
               >
                 <option value="">All Sports</option>
                 {SPORTS.map(s => (
@@ -182,13 +186,13 @@ export default function BrowseListingsPage() {
 
             {/* State Filter */}
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 State
               </label>
               <select
                 value={state}
                 onChange={(e) => setState(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-smooth bg-white text-slate-900 font-medium"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 font-medium"
               >
                 <option value="">All States</option>
                 {US_STATES.map(s => (
@@ -199,7 +203,7 @@ export default function BrowseListingsPage() {
 
             {/* City Filter */}
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 City
               </label>
               <input
@@ -207,14 +211,14 @@ export default function BrowseListingsPage() {
                 placeholder="Enter city..."
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-smooth placeholder:text-slate-400 font-medium"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder:text-gray-400 font-medium"
               />
             </div>
 
             {/* Age Range */}
             <div className="md:col-span-3 grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Min Age
                 </label>
                 <input
@@ -222,11 +226,11 @@ export default function BrowseListingsPage() {
                   placeholder="8"
                   value={minAge}
                   onChange={(e) => setMinAge(e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-smooth placeholder:text-slate-400 font-medium"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder:text-gray-400 font-medium"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Max Age
                 </label>
                 <input
@@ -234,7 +238,7 @@ export default function BrowseListingsPage() {
                   placeholder="18"
                   value={maxAge}
                   onChange={(e) => setMaxAge(e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-smooth placeholder:text-slate-400 font-medium"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder:text-gray-400 font-medium"
                 />
               </div>
             </div>
@@ -246,10 +250,10 @@ export default function BrowseListingsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Results count */}
         <div className="mb-8">
-          <p className="text-sm font-semibold text-slate-600">
+          <p className="text-sm font-semibold text-gray-600">
             {loading ? 'Loading...' : (
               <>
-                <span className="text-indigo-600">{total}</span> position{total !== 1 ? 's' : ''} found
+                <span className="text-blue-600">{total}</span> position{total !== 1 ? 's' : ''} found
               </>
             )}
           </p>
@@ -257,8 +261,10 @@ export default function BrowseListingsPage() {
 
         {/* Loading State */}
         {loading && (
-          <div className="flex justify-center py-20">
-            <Loader2 className="h-10 w-10 text-indigo-600 animate-spin" />
+          <div className="space-y-6">
+            {[...Array(3)].map((_, i) => (
+              <ListingCardSkeleton key={i} />
+            ))}
           </div>
         )}
 
@@ -266,14 +272,13 @@ export default function BrowseListingsPage() {
         {!loading && listings.length > 0 && (
           <div className="space-y-6">
             {listings.map(listing => (
-              <Link
+              <div
                 key={listing.id}
-                href={`/listings/${listing.id}`}
-                className="group block"
+                className="bg-white rounded-2xl shadow-premium border border-slate-200 hover:shadow-premium-lg hover:border-indigo-200 transition-smooth overflow-hidden"
               >
-                <div className="bg-white rounded-2xl shadow-premium border border-slate-200 hover:shadow-premium-lg hover:border-indigo-200 transition-smooth overflow-hidden">
-                  <div className="md:flex">
-                    {/* Team Logo */}
+                <div className="md:flex">
+                  {/* Team Logo */}
+                  <Link href={`/listings/${listing.id}`} className="group block">
                     <div className="md:w-56 h-56 bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-center flex-shrink-0 relative overflow-hidden">
                       {listing.teams.logo_url ? (
                         <img
@@ -291,55 +296,59 @@ export default function BrowseListingsPage() {
                         {listing.teams.sports.name}
                       </div>
                     </div>
+                  </Link>
 
-                    {/* Listing Info */}
-                    <div className="flex-1 p-6 md:p-8">
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="flex-1">
+                  {/* Listing Info */}
+                  <div className="flex-1 p-6 md:p-8">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="flex-1">
+                        <Link href={`/listings/${listing.id}`} className="group">
                           <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-smooth">
                             {listing.title}
                           </h3>
-                          <p className="text-slate-600 font-medium">
-                            {listing.teams.name} · {listing.teams.orgs.name}
-                          </p>
-                        </div>
-                        {listing.fee_cents !== null && (
-                          <div className="text-right ml-4">
-                            <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                              {formatCurrency(listing.fee_cents)}
-                            </div>
-                            {listing.fee_cents > 0 && (
-                              <div className="text-xs text-slate-500 font-semibold">application fee</div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-
-                      {listing.description && (
-                        <p className="text-slate-700 mb-5 line-clamp-2 font-medium">
-                          {listing.description}
+                        </Link>
+                        <p className="text-slate-600 font-medium">
+                          {listing.teams.name} · {listing.teams.orgs.name}
                         </p>
+                      </div>
+                      {listing.fee_cents !== null && (
+                        <div className="text-right ml-4">
+                          <div className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+                            {formatCurrency(listing.fee_cents)}
+                          </div>
+                          {listing.fee_cents > 0 && (
+                            <div className="text-xs text-slate-500 font-semibold">application fee</div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {listing.description && (
+                      <p className="text-slate-700 mb-5 line-clamp-2 font-medium">
+                        {listing.description}
+                      </p>
+                    )}
+
+                    <div className="flex flex-wrap gap-3 mb-4">
+                      {listing.positions && (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-900 border border-indigo-200">
+                          <Users className="h-3 w-3 mr-1.5" />
+                          {listing.positions.name}
+                        </span>
                       )}
 
-                      <div className="flex flex-wrap gap-3 mb-4">
-                        {listing.positions && (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-indigo-100 to-indigo-50 text-indigo-900 border border-indigo-200">
-                            <Users className="h-3 w-3 mr-1.5" />
-                            {listing.positions.name}
-                          </span>
-                        )}
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-emerald-100 to-emerald-50 text-emerald-900 border border-emerald-200">
+                        {formatAgeRange(listing.min_age, listing.max_age)}
+                      </span>
 
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-emerald-100 to-emerald-50 text-emerald-900 border border-emerald-200">
-                          {formatAgeRange(listing.min_age, listing.max_age)}
+                      {formatGradeRange(listing.min_grade, listing.max_grade) && (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-slate-100 to-slate-50 text-slate-900 border border-slate-200">
+                          {formatGradeRange(listing.min_grade, listing.max_grade)}
                         </span>
+                      )}
+                    </div>
 
-                        {formatGradeRange(listing.min_grade, listing.max_grade) && (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-slate-100 to-slate-50 text-slate-900 border border-slate-200">
-                            {formatGradeRange(listing.min_grade, listing.max_grade)}
-                          </span>
-                        )}
-                      </div>
-
+                    <div className="flex flex-wrap items-center justify-between gap-4">
                       <div className="flex flex-wrap gap-4 text-sm text-slate-600">
                         {(listing.teams.city || listing.teams.state) && (
                           <div className="flex items-center font-medium">
@@ -361,10 +370,26 @@ export default function BrowseListingsPage() {
                           </div>
                         )}
                       </div>
+
+                      {/* CTA Buttons */}
+                      <div className="flex gap-3 ml-auto">
+                        <Link
+                          href={`/listings/${listing.id}`}
+                          className="px-4 py-2 border-2 border-indigo-600 text-indigo-600 font-semibold rounded-lg hover:bg-indigo-50 transition-colors text-sm"
+                        >
+                          View Details
+                        </Link>
+                        <Link
+                          href={`/listings/${listing.id}/apply`}
+                          className="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors text-sm shadow-sm"
+                        >
+                          Apply Now
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         )}
@@ -384,7 +409,12 @@ export default function BrowseListingsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <button
                 onClick={() => {
-                  setFilters({ sport: '', state: '', city: '', minAge: '', maxAge: '', search: '' });
+                  setSport('');
+                  setState('');
+                  setCity('');
+                  setMinAge('');
+                  setMaxAge('');
+                  setSearch('');
                 }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors"
               >
@@ -405,15 +435,15 @@ export default function BrowseListingsPage() {
                 Popular Searches
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
-                {['Baseball', 'Basketball', 'Soccer', 'Softball'].map((sport) => (
+                {['Baseball', 'Basketball', 'Soccer', 'Softball'].map((sportName) => (
                   <button
-                    key={sport}
+                    key={sportName}
                     onClick={() => {
-                      setFilters({ ...filters, sport: sport.toLowerCase() });
+                      setSport(sportName.toLowerCase());
                     }}
                     className="px-5 py-2 bg-white border border-slate-200 rounded-full text-slate-700 hover:bg-slate-50 hover:border-indigo-300 transition-all font-medium"
                   >
-                    {sport}
+                    {sportName}
                   </button>
                 ))}
               </div>
@@ -421,6 +451,7 @@ export default function BrowseListingsPage() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
