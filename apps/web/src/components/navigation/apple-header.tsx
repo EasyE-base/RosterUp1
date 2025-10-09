@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { MobileMenu } from './mobile-menu';
 
 export function AppleHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,15 +42,16 @@ export function AppleHeader() {
 
           {/* Right: CTAs */}
           <div className="flex items-center gap-3" style={{ justifySelf: 'end' }}>
-            <Link href="/login" className="hidden sm:inline-flex h-11 items-center rounded-full px-4 text-sm font-medium text-gray-700 hover:text-gray-900">
+            <Link href="/login" className="hidden md:inline-flex h-11 items-center rounded-full px-4 text-sm font-medium text-gray-700 hover:text-gray-900">
               Sign In
             </Link>
             <Link
               href="/auth/signup"
-              className="inline-flex h-11 items-center rounded-full bg-blue-500 px-7 text-[17px] font-medium text-white hover:bg-blue-600"
+              className="hidden md:inline-flex h-11 items-center rounded-full bg-blue-500 px-7 text-[17px] font-medium text-white hover:bg-blue-600"
             >
               Get Started
             </Link>
+            <MobileMenu />
           </div>
         </nav>
       </div>
